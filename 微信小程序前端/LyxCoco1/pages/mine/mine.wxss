@@ -1,0 +1,495 @@
+/* pages/mine/mine.wxss */
+div{
+  display: block;
+}
+.header{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+  align-items: center;
+  background: #fff;
+  margin-top: 30px;
+}
+.btn-login{
+  padding: 8%;
+  background: #fff;
+}
+.userinfo-avatar{
+  border-radius: 128rpx;
+  width: 128rpx;
+  height: 128rpx;
+  margin-block-start: 10px;
+}
+.userinfo-nickname{
+  margin-top: 20rpx;
+  font-size: 38rpx;
+}
+
+
+/* .userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .userinfo-avatar {
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+  }
+  
+  .userinfo-nickname {
+    color: #333;
+  }
+  
+  .usermotto {
+    margin-top: 200px;
+  } */
+
+/* 会员卡 */
+.membershipcard{
+  width: 90vw;
+  height: 54vw;
+  margin: 20px auto;
+  border-radius: 10px;
+  background: #000;
+  overflow: hidden;
+  position: relative;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  box-shadow: 0px 5px 10px 2px #dadada;
+}
+.membershipcard image{
+  width: 100%;
+}
+.membershipcard .membernumber{
+  color: #fff;
+  position: absolute;
+  right: 20px;
+  bottom: 15px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+
+
+
+  /* //设置 */
+  .setbox{
+    margin-top: 50px;
+    color: #555555;
+    font-size: 16px;
+  }
+  .setbox li{
+    width: 80vw;
+    height: 30px;
+    line-height: 30px;
+    padding: 20px;
+    display: block;
+    margin: 0 auto;
+    border-top: 1px solid #F1F1F1;
+  }
+  .setbox li:hover{
+    background: #FBFBFB;
+  }
+  .setbox image{
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 30px;
+  }
+  .setbox li p{
+    display: block;
+    text-align: center;
+    font-size: 10px;
+    color: #ccc;
+  }
+  .setbox button{
+    font-size: 14px;
+    float: right;
+    font-weight: 400;
+    margin-top: 5px;
+  }
+  .setbox .suprise , .setbox .exchangecode ,.setbox .jdnumber {
+    font-size: 14px;
+    float: right;
+    color: #8C8C8C;
+  }
+  .setbox .authorized{
+    width: 110px;
+    height: 40px;
+    line-height: 25px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 20px;
+    float: right;
+    color: #fff;
+    background: #000;
+    box-sizing: border-box;
+    display: block;
+    margin-top: -5px;
+    transition: all 1s;
+  }
+  .setbox .authorized:hover{
+    background:#ccc;
+    color: #000;
+  }
+  .birthday{
+    position: relative;
+  }
+  .birthpicker{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: pink; */
+
+  }
+
+  .birthbox{
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.7);
+  }
+  .birthbox .card{
+    width: calc( 1.2 * 45vw );
+    height: calc( 1.2 * 66vw );
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-50%);
+    /* background: #fff; */
+    border-radius: 10px;
+    /* border-right: 3px solid #aaa;
+    border-bottom: 3px solid #aaa; */
+    box-shadow: 0px 5px 10px 2px #555;
+    overflow: hidden;
+  }
+  .birthbox .card image{
+    width: 100%;
+  }
+  .happy{
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    background: #000;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0px 5px 7px 7px #555;
+    text-align: center;
+    border-radius: 20px;
+  }
+  .cont{
+    position: absolute;
+    top: 120px;
+    right: 27px;
+    font-size: 14px;
+    color: #555;
+  }
+  .cont span{
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+  }
+
+  .birthbox .zs{
+    position: absolute;
+    font-size: 60px;
+  }
+  .birthbox .s1{
+    top: 20px;
+    left: 10px;
+    font-size: 60px;
+  }
+  .birthbox .s2{
+    top: 600px;
+    left: 230px;
+    font-size: 30px;
+  }
+  .birthbox .s3{
+    top: 360px;
+    left: 180px;
+    font-size: 30px;
+  }
+  .birthbox .s4{
+    top: 550px;
+    left: 280px;
+    font-size: 30px;
+  }
+  .birthbox .s5{
+    top: 400px;
+    left: 30px;
+    font-size: 40px;
+  }
+  .birthbox .s6{
+    top: 80px;
+    left: 300px;
+    font-size: 60px;
+  }
+  .birthbox .s7{
+    top: 5px;
+    left: 110px;
+    font-size: 40px;
+  }
+  .birthbox .s8{
+    top: 500px;
+    left: 70px;
+    font-size: 30px;
+  }
+
+  /* CDK礼品卡 */
+  
+.exchangebox{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.2);
+}
+.exchangebox .exchange{
+  width: 350px;
+  height: 216px;
+  margin: 46% auto;
+  background: #F4F4F4;
+  border-radius: 15px;
+  box-shadow: 0px 5px 10px 2px #333;
+  overflow: hidden;
+  /* display: flow-root; */
+  position: relative;
+}
+.exchangebox  .closeex{
+  /* margin: -50px 0 0 5px; */
+  position: absolute;
+  right: 15px;
+  top: 18%;
+  font-size: 30px;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  line-height: 33px;
+  color: #000;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.8);
+}
+.exchangebox .exchange .dhlpk{
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  font-size: 16px;
+  color: #575a5f;
+  font-weight: 600;
+  /* margin: 20px 0 0; */
+}
+.exchangebox .exchange .cdk{
+  position: absolute;
+  left: 16px;
+  top: 72px;
+  width: 230px;
+  height: 40px;
+  background: #fff;
+  /* margin: 20px auto 0; */
+  border-radius: 20px;
+  /* text-indent: 1em; */
+  padding: 0 0 0 30px;
+  box-sizing: border-box;
+}
+.exchangebox .exchange .shutiao{
+  width: 81px;
+  height: 100%;
+  background: #fff;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.exchangebox .exchange .shutiao .chayan{
+  width: 55px;
+  height: 55px;
+  background: #000;
+  display: block;
+  border-radius: 50%;
+  margin: 20px auto 0;
+}
+.exchangebox .exchange .hengtiao{
+  width: 100%;
+  height: 48px;
+  background: #515463;
+  position: absolute;
+  left: 0;
+  bottom: 21px;
+}
+.exchangebox  .exbtn{
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translate(-50%);
+  width: 325px;
+  height: 50px;
+  line-height: 50px;
+  background: #A42A35;
+  color: #fff;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0px 5px 10px 1px #333;
+  /* margin: 40px auto 0; */
+}
+
+/* 兑换成功后 收到礼物 */
+.getgiftbox{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.8);
+}
+.getgiftbox .opengift{
+  margin-top: 30vh;
+  text-align: center;
+  font-size: 140px;
+}
+.getgiftbox .cinfobox .ctop{
+  color: #eee;
+  width: 100%;
+  font-size: 18px;
+  text-align: center;
+  position: absolute;
+  top: 20px;
+  padding: 0 20px ;
+  box-sizing: border-box;
+}
+.getgiftbox .cinfobox .ctop .nick{
+  color: #ffa318;
+  font-size: 28px;
+  font-weight: 600;
+}
+.getgiftbox .cinfobox .ctop .cname{
+  color: #ff9318;
+  font-size: 30px;
+  font-weight: 600;
+}
+.getgiftbox .cinfobox .cbtm{
+  color: #aaa;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: calc( 20px + 1.4 * 66vw + 15%);
+  padding: 0 20px ;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.getgiftbox .cinfobox .cbtm .cble{
+  font-weight: 600;
+  font-size: 18px;
+  color: #eee;
+}
+.getgiftbox .cinfobox .cbtm .cpri{
+  color: #ff9318;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.cimgbox{
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%) scale(0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  width: calc(1.4 * 45vw );
+  height: calc( 1.4 * 66vw);
+  border-top: 3px solid #ccc;
+  border-right: 4px solid #aaa;
+  /* border-bottom: 4px solid #999; */
+  box-shadow: 0px 5px 50px 3px rgb(255, 238, 162);
+  transition: all 1.5s;
+}
+.cimgbox.fall{
+  top: 15%;
+  transform: translate(-50%) scale(1);
+}
+.cimgbox image{
+  width: 100%;
+}
+.shouxia{
+  position: fixed;
+  bottom: 30px ;
+  left: 50%;
+  transform: translate(-50%);
+  width: 50vw;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: #FFCA18;
+  color: #000;
+  /* box-shadow: 0px 5px 10px 2px #777; */
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* 授权手机面板 */
+.phonebox{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.3);
+}
+.phonepad{
+  width: 340px;
+  height: 210px;
+  margin: 30% auto 0;
+  border-radius: 8px;
+  background: #fff;
+  position: relative;
+  display: flow-root;
+  box-shadow: 0px 5px 10px 2px #777;
+}
+.phonepad .closephone{
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  font-size: 22px;
+}
+.phonepad .titlephone{
+  text-align: center;
+  margin: 12px auto 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #555;
+}
+.phonepad .inpphone{
+  width: 240px;
+  height: 40px;
+  border-radius: 20px;
+  background: #eee;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: 80px;
+  padding: 0 0 0 2em;
+}
+.phonepad .yesphone{
+  width: 100px;
+  height: 40px;
+  background: #000;
+  color: #fff;
+  border-radius: 20px;
+  line-height: 40px;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 20px;
+}

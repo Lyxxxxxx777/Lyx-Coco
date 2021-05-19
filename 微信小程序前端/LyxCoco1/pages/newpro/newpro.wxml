@@ -1,0 +1,11 @@
+<!--pages/newpro/newpro.wxml-->
+<!--pages/sealim/sealim.wxml-->
+<div class="title">新品“雪耳系列”来圈“粉”了！</div>
+<div class="text"><span>Lyx&Coco</span><span>2020-10-01</span></div>
+<div class="imagebox">
+    <image mode="widthFix" src="https://s3.ax1x.com/2021/03/08/61E0W6.png"></image>
+    <image mode="widthFix" src="https://s3.ax1x.com/2021/03/08/61EwJx.png"></image>
+    <image mode="widthFix" src="https://s3.ax1x.com/2021/03/08/61EdF1.png"></image>
+    <image mode="widthFix" src="https://s3.ax1x.com/2021/03/08/61EUoR.png"></image>
+</div>
+

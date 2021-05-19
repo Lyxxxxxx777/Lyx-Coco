@@ -1,0 +1,244 @@
+/* pages/bill/bill.wxss */
+page{
+    background: #F4F4F4;
+}
+div{
+    display: block;
+}
+.nobill{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0,-50%);
+    display: block;
+    z-index: 2000;
+}
+.nobill image{
+    width: 60vw;
+    display: block;
+    margin: 20% auto 0;
+}
+.nobill text{
+    display: block;
+    color: #787878;
+    text-align: center;
+    margin: 30px auto 0;
+}
+.btnbox{
+  display: flex;
+  width: 90vw;
+  /* margin: 0 auto; */
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 25px;
+  font-weight: 600;
+  background: #fff;
+  box-shadow: 0px 5px 10px 2px #dadada;
+}
+.btnbox .shu{
+  width: 2px;
+  height: 26px;
+  background: #666;
+  margin: 13px 0 0;
+  border-radius: 1px;
+}
+.nobill .orderbtn{
+  /* margin: 25px auto 0; */
+  width: 45vw;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background: #fff;
+  color: #000;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.loginbtn{
+  /* margin: -42px auto 0; */
+  width: 45vw;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background: #fff;
+  color: #000;
+  /* border-radius: 21px; */
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+
+}
+
+.searchbox{
+    width: 65vw;
+    height: 40px;
+    background: #fff;
+    border-radius: 20px;
+    border: 1px solid rgba(100,100,100,0.3);
+    color: rgba(0,0,0,0.6); 
+    margin: 20px auto 0;
+}
+.searchbox image{
+    display: inline-block;
+    width: 20px;
+    vertical-align: top;
+    margin: 10px 10px 0 10px;
+}
+
+  .searchbox input{
+    color: rgba(0,0,0,0.6); 
+    font-size: 14px;
+    width: 50vw;
+    height: 40px;
+    display: inline-block;
+    /* text-indent: 1em; */
+    margin-left: 14px;
+}
+
+.billbox{
+    margin-top: 40px;
+    padding-bottom: 30px;
+}
+/* .teaboxli{
+  min-height: 167px;
+} */
+.teabox{
+    box-shadow: 0px 5px 10px 2px #dadada;
+    width: 308px;
+    min-height: 167px;
+    border-radius: 10px;
+    position: relative;
+    margin: 8px auto;
+    background: #FBFBFB;
+    display: flow-root;
+  }
+.teabox image{
+    width: 308px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    border-radius: 10px;
+  }
+.teabox .teaname{
+    position: absolute;
+    right:15px;
+    top:20px;
+    font-weight: 600;
+  }
+.teabox .teaprice{
+    position: absolute;
+    right:15px;
+    top:50px;
+    font-weight: 600;
+  }
+.teabox .okok{
+    width: 60px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    position: absolute;
+    right: 15px;
+    top: 80px;
+    font-size: 12px;
+    border-radius: 10px;
+    background: #41B883;
+    color:#fff;
+}
+.teabox .okoknono{
+    width: 60px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    position: absolute;
+    right: 15px;
+    top: 80px;
+    font-size: 12px;
+    border-radius: 10px;
+    background: #fac125;
+    color:#fff;
+}
+.teabox .plusbtn{
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    position: absolute;
+    right:15px;
+    bottom:15px;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 18px;
+    border: 1px solid #ccc;
+  }
+.teabox .qudanhaook{
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    position: absolute;
+    right:95px;
+    top:56px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 50%;
+    background: #41B883;
+    color: #fff;
+  }
+.teabox .qudanhaono{
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    position: absolute;
+    right:95px;
+    top:56px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 50%;
+    background: #fac125;
+    color: #fff;
+  }
+
+  .teabox .showmorebox{
+    margin-top: 187px;
+    padding-bottom: 40px;
+    background: #FBFBFB;
+    border-radius: 10px;
+    z-index: 100;
+  }
+  .teabox .showmorebox .nc{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 25px;
+    /* flex-wrap: wrap; */
+    align-items: flex-end;
+  }
+  .teabox .showmorebox .nc>div>b{
+      font-size: 16px;
+  }
+  .teabox .showmorebox .nc span{
+      display: block;
+      margin: 5px 0 0 ;
+  }
+  .teabox .showmorebox .ddh{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 25px;
+    flex-wrap: wrap;
+  }
+  .teabox .showmorebox span{
+      font-size: 12px;
+      color: #888;
+  }
+  .teabox .showmorebox b{
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+  }
+  .teabox .showmorebox b.money{
+      color: #41B883;
+  }

@@ -1,0 +1,110 @@
+<!--pages/bill/bill.wxml-->
+<div wx:if="{{(!historyBill.length)||(!isUserOpenID)}}" class="nobill">
+    <image mode="widthFix" src="https://z3.ax1x.com/2021/03/08/6lWZtS.png"></image>
+    <text>近期无点单记录或未登录</text>
+    <div class="btnbox">
+        <div class="orderbtn" bindtap="gotoPageorder">去点单</div>
+        <div class="shu"></div>
+        <div class="loginbtn" wx:if="{{!isUserOpenID}}" bindtap="gotoPagemine">去登录</div>
+    </div>
+</div>
+<div wx:if="{{(historyBill.length)&&(isUserOpenID)}}">
+    <div>
+        <div class="searchbox">
+        <input type="text" placeholder="搜索订单"  bindinput="search"></input>
+        <image class="searchicon"  mode="widthFix" src="/image/huisousuo.png"></image>
+    </div>
+    </div>
+    <div class="billbox">
+        <ul>
+            <li wx:for="{{searchVal?searchArr:historyBill}}" wx:if="{{item3.isOk==1}}" wx:for-item="item3"  wx:key="teaId" data-index="{{item3.billId}}" bindtap="getBillId">
+                <div class="teabox">
+                    <image mode="widthFix" src="{{teaInfo[teaImgIndexArr[index]].teaImage?teaInfo[teaImgIndexArr[index]].teaImage:item3.teaImage}}"></image>
+                        <div class="teaname">{{item3.store}}</div>
+                    <div class="teaprice">￥{{item3.amountMoney}}.0</div>
+                    <div class="okok">待取单</div>
+                    <div class="qudanhaook">{{item3.billNum}}</div>
+
+                    <!-- 点击打开订单详情 -->
+                    <div class="showmorebox" wx:if="{{item3.billId==isBillOpen}}">
+                        <div class="nc" wx:for="{{item3.teaOrder}}" wx:for-item="item4" wx:key="index">
+                            <div>
+                                <b>{{item4.teaName}}  ×{{item4.teaNumber}}</b>
+                                <span wx:if="{{item4.feedSelected&&item4.temSelected&&item4.sweetSelected}}">{{item4.feedSelected}}/{{item4.temSelected}}/{{item4.sweetSelected}}</span>
+                            </div>
+                            <b class="money">￥{{(item4.teaPrice+item4.feedPrice)*item4.teaNumber}}.0</b>
+                        </div>
+                        <div class="ddh"><span>订单号</span><b>{{item3.billId}}</b></div>
+                        <div class="ddh"><span>完成状态</span><b>待取单</b></div>
+                        <div class="ddh"><span>下单时间</span><b>{{item3.payTime}}</b></div>
+                        <div class="ddh"><span>下单门店</span><b>{{item3.store}}</b></div>
+                        <div class="ddh"><span>支付方式</span><b>{{item3.pay}}</b></div>
+                        <div class="ddh"><span>金额总计</span><b class="money">￥{{item3.amountMoney}}.0</b></div>
+                        <div class="ddh"><span>取单时间</span><b>{{item3.howToGet}}</b></div>
+                        <div class="ddh"><span>完成时间</span><b>待您取单</b></div>
+                        <div class="ddh"><span>下单备注</span><b>{{item3.remarks}}</b></div>
+                    </div>
+                </div>
+
+            </li>
+            <li wx:for="{{searchVal?searchArr:historyBill}}" wx:if="{{item3.isOk==0}}" wx:for-item="item3"  wx:key="teaId" data-index="{{item3.billId}}" bindtap="getBillId">
+                <div class="teabox">
+                    <image mode="widthFix" src="{{teaInfo[teaImgIndexArr[index]].teaImage?teaInfo[teaImgIndexArr[index]].teaImage:item3.teaImage}}"></image>
+                        <div class="teaname">{{item3.store}}</div>
+                    <div class="teaprice">￥{{item3.amountMoney}}.0</div>
+                    <div class="okoknono">待制作</div>
+                    <div class="qudanhaono">{{item3.billNum}}</div>
+
+                    <!-- 点击打开订单详情 -->
+                    <div class="showmorebox" wx:if="{{item3.billId==isBillOpen}}">
+                        <div class="nc" wx:for="{{item3.teaOrder}}" wx:for-item="item4" wx:key="index">
+                            <div>
+                                <b>{{item4.teaName}}  ×{{item4.teaNumber}}</b>
+                                <span wx:if="{{item4.feedSelected&&item4.temSelected&&item4.sweetSelected}}">{{item4.feedSelected}}/{{item4.temSelected}}/{{item4.sweetSelected}}</span>
+                            </div>
+                            <b class="money">￥{{(item4.teaPrice+item4.feedPrice)*item4.teaNumber}}.0</b>
+                        </div>
+                        <div class="ddh"><span>订单号</span><b>{{item3.billId}}</b></div>
+                        <div class="ddh"><span>完成状态</span><b>待制作</b></div>
+                        <div class="ddh"><span>下单时间</span><b>{{item3.payTime}}</b></div>
+                        <div class="ddh"><span>下单门店</span><b>{{item3.store}}</b></div>
+                        <div class="ddh"><span>支付方式</span><b>{{item3.pay}}</b></div>
+                        <div class="ddh"><span>金额总计</span><b class="money">￥{{item3.amountMoney}}.0</b></div>
+                        <div class="ddh"><span>取单时间</span><b>{{item3.howToGet}}</b></div>
+                        <div class="ddh"><span>完成时间</span><b>请稍后</b></div>
+                        <div class="ddh"><span>下单备注</span><b>{{item3.remarks}}</b></div>
+                    </div>
+                </div>
+            </li>
+            <li class="teaboxli" wx:for="{{searchVal?searchArr:historyBill}}"  wx:if="{{item3.isOk==2}}" wx:for-item="item3"  wx:key="teaId" data-index="{{item3.billId}}" bindtap="getBillId">
+                <div class="teabox">
+                    <image mode="widthFix" src="{{teaInfo[teaImgIndexArr[index]].teaImage?teaInfo[teaImgIndexArr[index]].teaImage:item3.teaImage}}"></image>
+                    <div class="teaname">{{item3.store}}</div>
+                    <div class="teaprice">￥{{item3.amountMoney}}.0</div>
+                    <div class="okok">已完成</div>
+                    <div wx:if="{{!searchVal}}" class="plusbtn" catchtap="another" data-index="{{index}}">再来一单</div>
+
+                    <!-- 点击打开订单详情 -->
+                    <div class="showmorebox" wx:if="{{item3.billId==isBillOpen}}">
+                        <div class="nc" wx:for="{{item3.teaOrder}}" wx:for-item="item4" wx:key="index">
+                            <div>
+                                <b>{{item4.teaName}}  ×{{item4.teaNumber}}</b>
+                                <span wx:if="{{item4.feedSelected&&item4.temSelected&&item4.sweetSelected}}">{{item4.feedSelected}}/{{item4.temSelected}}/{{item4.sweetSelected}}</span>
+                            </div>
+                            <b class="money">￥{{(item4.teaPrice+item4.feedPrice)*item4.teaNumber}}.0</b>
+                        </div>
+                        <div class="ddh"><span>订单号</span><b>{{item3.billId}}</b></div>
+                        <div class="ddh"><span>完成状态</span><b>已完成</b></div>
+                        <div class="ddh"><span>下单时间</span><b>{{item3.payTime}}</b></div>
+                        <div class="ddh"><span>下单门店</span><b>{{item3.store}}</b></div>
+                        <div class="ddh"><span>支付方式</span><b>{{item3.pay}}</b></div>
+                        <div class="ddh"><span>金额总计</span><b class="money">￥{{item3.amountMoney}}.0</b></div>
+                        <div class="ddh"><span>取单时间</span><b>{{item3.howToGet}}</b></div>
+                        <div class="ddh"><span>完成时间</span><b>{{item3.pickUpTime}}</b></div>
+                        <div class="ddh"><span>下单备注</span><b>{{item3.remarks}}</b></div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

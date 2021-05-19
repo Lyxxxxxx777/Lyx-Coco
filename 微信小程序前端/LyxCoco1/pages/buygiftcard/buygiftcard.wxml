@@ -1,0 +1,63 @@
+<!--pages/buygiftcard/buygiftcard.wxml-->
+
+<!--pages/checkout/checkout.wxml-->
+<!-- <text>pages/checkout/checkout.wxml</text> -->
+<div class="checkoutbox">
+        <div class="orderbox">
+            <image mode="widthFix" src="{{allGiftCardList[whichCardIndex].cardImage}}"></image>
+            <!-- <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cYvs8H.png"></image> -->
+        </div>
+
+        <div class="teainfobox">
+
+            <div class="posbox shumbox">
+                <image class="bzimg" mode="widthFix" src="/image/nickname.png"></image>
+                <div class="ddh">署名</div>
+                <input bindinput="xieshuming" class="shuming" type="text" maxlength="16" placeholder="填写你的署名"/>
+            </div>
+            
+            <div class="posbox">
+                <image class="bzimg" mode="widthFix" src="/image/gift.png"></image>
+                <div class="ddh">礼品卡</div>
+                <div class="ddh gongji">{{allGiftCardList[whichCardIndex].cardName}}</div>
+            </div>
+
+            <div class="posbox">
+                <image class="bzimg" mode="widthFix" src="/image/time.png"></image>
+                <div class="ddh">有效期</div>
+                <div class="ddh gongji">{{allGiftCardList[whichCardIndex].cardLongterm/(1000*3600*24)}}天</div>
+            </div>
+
+            <div class="posbox">
+                <image class="bzimg" mode="widthFix" src="/image/remarks.png"></image>
+                <div class="ddh">祝福</div>
+            </div>
+            <textarea bindinput="xiezhufu" class="myremarks" type="text" maxlength="30" placeholder="为TA填写你的祝福语"/>
+        </div>
+    </div>
+
+    <!-- 购物车bar -->
+<div class="carbox">
+    <div class="horbar">
+        <div class="price"><span class="yuan">￥</span>{{allGiftCardList[whichCardIndex].cardPrice}}.0</div>
+        <div bindtap="gotoPay" class="btn">去支付</div>
+    </div>
+</div>
+
+<!-- 去支付 -->
+<div class="gotopaybox" wx:if="{{isPayPadShow}}">
+<div class="container">
+    <div class="close" bindtap="closePay">×</div>
+    <div class="face">使用面容</div>
+    <div class="who">Lyx&Coco</div>
+    <div class="money"><span>￥</span>{{allGiftCardList[whichCardIndex].cardPrice}}.00</div>
+    <div class="mode">
+        <div class="zffs">支付方式</div>
+        <div class="lqbox">
+            <image class="lqimg" mode="widthFix" src="/image/money.png"></image>
+            <div>零钱</div>
+        </div>
+    </div>
+    <div class="paybtn" bindtap="paySuccess">确认支付</div>
+</div>
+</div>

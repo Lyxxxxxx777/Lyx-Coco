@@ -1,0 +1,84 @@
+<!--pages/address/address.wxml-->
+<div class="top">
+<div class="searchbox">
+  <image class="searchicon"  mode="widthFix" src="/image/huisousuo.png"></image>
+  <input type="text" bindinput="search" placeholder="输入地址可查找附近门店哦!"></input>
+</div>
+<div class="choosetab">
+  <div class="nearby {{isShowFJMD==0?'active':''}}" bindtap="showFJMD">附近门店</div>
+  <div class="nearby {{isShowFJMD==1?'active':''}}" bindtap="showSCDMD">收藏的门店</div>
+</div>
+<map markers="{{markers}}" latitude="{{markers[0].latitude}}" longitude="{{markers[0].longitude}}"></map>
+</div>
+
+<!-- 附近门店 -->
+<div wx:if="{{isShowFJMD==0}}" class="bottom">
+  <ul>
+    <li bindtap="clickSlectStore" data-index="{{index}}"
+    wx:for="{{searchVal?searchArr:storeMsg}}" wx:for-item="item" wx:key="storeid" wx:if="{{!item.isShow}}">
+      <div class="sname">{{item.storeName}}</div>
+      <div class="sdistance">距你{{item.stotome}}M</div>
+      <div class="sposition">{{item.storePosition}}</div>
+      <div class="shours">营业时间：{{item.storeBusinessHoursSta}}-{{item.storeBusinessHoursEnd}}</div>
+      <div class="clickshowbox" wx:if="{{item.isopening}}">
+        <div class="rightimage">
+          <div class="call" bindtap="callPhone"></div>
+          <div class="collectionthis" bindtap="collectit" data-index="{{index}}"></div>
+          <div class="distance" bindtap="showDistance" data-index="{{index}}" ></div>
+        </div>
+        <div class="noworlater">
+          <p>到店自提:</p>
+          <div>
+            <radio-group class="radio-group" bindchange="radioChange">
+              <label class="radio">
+                <radio value="{{noworlater[0].name}}" checked="{{noworlater[0].checked}}"/>{{noworlater[0].value}}
+              </label>
+              <picker mode="time" value="{{time}}" start="{{storeMsg[index].storeBusinessHoursSta}}" end="{{storeMsg[index].storeBusinessHoursEnd}}" bindchange="bindTimeChange">
+                <label class="radio picker">
+                <radio value="{{noworlater[1].name}}" checked="{{noworlater[1].checked}}"/>{{noworlater[1].value}}
+              </label>
+            </picker>
+            </radio-group>
+          </div>
+        </div>
+        <div class="choosedrinkbtn" bindtap="gotoPageorder">选择饮品</div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- 收藏门店 -->
+<div wx:if="{{isShowFJMD==1}}" class="bottom">
+  <ul>
+    <li bindtap="clickSlectStore" data-index="{{item}}"
+    wx:for="{{shoucangArr}}" wx:for-item="item" wx:key="storeid" >
+      <div class="sname">{{storeMsg[item].storeName}}</div>
+      <div class="sdistance">距你{{storeMsg[item].stotome}}M</div>
+      <div class="sposition">{{storeMsg[item].storePosition}}</div>
+      <div class="shours">营业时间：{{storeMsg[item].storeBusinessHoursSta}}-{{storeMsg[item].storeBusinessHoursEnd}}</div>
+      <div class="clickshowbox" wx:if="{{storeMsg[item].isopening}}">
+        <div class="rightimage">
+          <div class="call" bindtap="callPhone"></div>
+          <div class="collectionthis" bindtap="collectit" data-index="{{item}}"></div>
+          <div class="distance" bindtap="showDistance" data-index="{{item}}" ></div>
+        </div>
+        <div class="noworlater">
+          <p>到店自提:</p>
+          <div>
+            <radio-group class="radio-group" bindchange="radioChange">
+              <label class="radio">
+                <radio value="{{noworlater[0].name}}" checked="{{noworlater[0].checked}}"/>{{noworlater[0].value}}
+              </label>
+              <picker mode="time" value="{{time}}" start="{{storeMsg[index].storeBusinessHoursSta}}" end="{{storeMsg[index].storeBusinessHoursEnd}}" bindchange="bindTimeChange">
+                <label class="radio picker">
+                <radio value="{{noworlater[1].name}}" checked="{{noworlater[1].checked}}"/>{{noworlater[1].value}}
+              </label>
+            </picker>
+            </radio-group>
+          </div>
+        </div>
+        <div class="choosedrinkbtn" bindtap="gotoPageorder">选择饮品</div>
+      </div>
+    </li>
+  </ul>
+</div>

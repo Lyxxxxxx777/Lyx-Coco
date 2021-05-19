@@ -1,0 +1,118 @@
+<!--pages/mine/mine.wxml-->
+<view class="">
+<!-- 用户授权了，显示头像和昵称 -->
+  <view class="header" wx:if="{{isShowUserName}}" bindtap="change">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <!-- 如果户用没有授权，显示登录按钮 -->
+  <view wx:if="{{!isShowUserName}}" class="btn-login">
+    <button type="primary" bindtap="getUserProfile">授权登录</button>
+  </view>  
+
+  <div class="membershipcard">
+    <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cYl1KI.png"></image>
+    <div wx:if="{{userOpenIDSlice}}" class="membernumber">{{userOpenIDSlice}}</div>
+  </div>
+
+  <div class="setbox">
+    <ul>
+      <li bindtap="getopenid">
+        <image mode="widthFix" src="/image/wdkaipiaolishi.png"></image><span>用户OpenID同步</span>
+      </li>
+      <li bindtap="gotoPagelightplan">
+        <image mode="widthFix" src="/image/wdjidianka.png"></image><span>我的集点卡</span><span class="jdnumber">每月都有礼</span>
+      </li>
+      <li bindtap="openCDK">
+        <image mode="widthFix" src="/image/wdliwu.png"></image><span>礼品卡兑换</span><span class="exchangecode">输入券码兑换</span>
+      </li>
+      <li>
+        <image mode="widthFix" src="/image/wdshouji.png"></image><span>手机号</span><button class="authorized" bindtap="openPhone">授权手机</button>
+      </li>
+      <li bindtap="myAddress">
+        <image mode="widthFix" src="/image/wddizhi.png"></image><span>地址</span>
+      </li>
+      <li class="birthday" bindtap="testBirthday">
+        <image mode="widthFix" src="/image/wdshengri.png"></image><span>生日</span><span class="suprise">{{myBirthday?myBirthday:'年年有惊喜'}}</span>
+        <picker wx:if="{{!myBirthday}}" mode="date" value="{{myBirthday}}" start="1900-01-01" end="{{todayDate}}" bindchange="bindDateChange">
+          <div class="birthpicker">
+          </div>
+          </picker>
+      </li>
+      <li bindtap="callPhone">
+        <image mode="widthFix" src="/image/wdlianxikefu.png"></image><span>联系客服</span>
+      </li>
+      <li bindtap="setting">
+        <image mode="widthFix" src="/image/wdshezhi.png"></image><span>设置</span>
+      </li>
+      <li>
+        <p>Lyx&Coco</p>
+      </li>
+      
+    </ul>
+  </div>
+
+  <!-- //生日面板 -->
+  <div class="birthbox" wx:if="{{isBirthday}}">
+    <div class="zs s1">🎁</div>
+    <div class="zs s2">🥤</div>
+    <div class="zs s3">🎈</div>
+    <div class="zs s4">🎈</div>
+    <div class="zs s5">🎈</div>
+    <div class="zs s6">🎈</div>
+    <div class="zs s7">🎈</div>
+    <div class="zs s8">🎈</div>
+    <div class="card">
+      <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cYvs8H.png"></image>
+      <!-- <div class="cont">赠予您<span>珍珠奶茶</span>一杯</div> -->
+    </div>
+    <div class="happy" bindtap="thanks">生日快乐</div>
+  </div>
+
+  <!-- 授权手机面板 -->
+  <div class="phonebox" wx:if="{{isPhoneShow}}">
+    <div class="phonepad">
+      <div class="closephone" bindtap="closePhone">×</div>
+      <div class="titlephone">保存手机号</div>
+      <input class="inpphone" type="number" placeholder="请输入正确手机号码" bindinput="getPhoneVal"/>
+      <div class="yesphone" bindtap="getPhone">确定</div>
+    </div>
+  </div>
+
+  <!-- CDK面板 -->
+  <div wx:if="{{isCDKeyShow}}" class="exchangebox">
+    <div class="closeex" bindtap="closeCDK">×</div>
+    <div class="exbtn" bindtap="clcikExchange">立即兑换</div>
+    <div class="exchange">
+        <div class="dhlpk">兑换礼品卡</div>
+        <input class="cdk" bindinput="getCDKVal" placeholder="输入CDKey"/>
+        <div class="shutiao">
+          <image class="chayan" src="{{userInfo.avatarUrl}}" mode="widthFix"></image>
+        </div>
+        <div class="hengtiao"></div>
+    </div>
+</div>
+  <!-- //兑换成功 获得礼物 -->
+<div wx:if="{{SuccessfulExchange}}" class="getgiftbox">
+    <div class="opengift" bindtap="openGift" wx:if="{{isOpenGift==0}}">🎁</div>
+    <div class="cinfobox" wx:if="{{isShowGiftInfo}}">
+        <div class="ctop">
+            <div>恭喜获得<span class="nick"> {{currentGiftInfo[0].userName}} </span>送给你的</div>
+            <div><span class="cname">“{{currentGiftInfo[0].cardName}}”</span>礼品卡</div>
+        </div>
+        <div class="cbtm">
+            <div class="cble">{{currentGiftInfo[0].userBlessing}}</div>
+            <div>价值<span class="cpri">￥{{currentGiftInfo[0].cardPrice}}</span></div>
+            <div wx:if="{{giftInfoTime!='NaN-NaN-NaN'}}">有效期至{{giftInfoTime}}</div>
+            <div wx:if="{{giftInfoTime=='NaN-NaN-NaN'}}">有效期至 永久</div>
+        </div>
+    </div>
+    <div class="cimgbox {{isOpenGift==1?'fall':''}}">
+        <image mode="widthFix" src="{{currentGiftInfo[0].cardImage}}"></image>
+    </div>
+
+    <div wx:if="{{isShowGiftInfo}}" class="shouxia" bindtap="clickShouxia">开心收下</div>
+</div>
+
+
+</view>

@@ -1,0 +1,61 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/order/order",
+    "pages/bill/bill",
+    "pages/mine/mine",
+    "pages/lightplan/lightplan",
+    "pages/newpro/newpro",
+    "pages/sealim/sealim",
+    "pages/address/address",
+    "pages/checkout/checkout",
+    "pages/giftcard/giftcard",
+    "pages/mygiftcard/mygiftcard",
+    "pages/buygiftcard/buygiftcard"
+  ],
+  
+"tabBar": {
+  "color": "#ccc",
+  "borderStyle": "white",
+  "selectedColor": "#333",
+  "list":[{
+    "pagePath": "pages/index/index",
+    "text": "首页",
+    "iconPath": "/image/home01.png",
+    "selectedIconPath": "/image/home12.png"
+    },
+    {
+      "pagePath": "pages/order/order",
+      "text": "点单",
+      "iconPath": "/image/order01.png",
+      "selectedIconPath": "/image/order12.png"
+    },
+    {
+      "pagePath": "pages/bill/bill",
+      "text": "订单",
+      "iconPath": "/image/bill01.png",
+      "selectedIconPath": "/image/bill12.png"
+    },
+    {
+      "pagePath": "pages/mine/mine",
+      "text": "我的",
+      "iconPath": "/image/mine01.png",
+      "selectedIconPath": "/image/mine12.png"
+    }
+  ]
+},
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#F4F4F4",
+    "navigationBarTextStyle":"black",
+    "backgroundColor":"#F4F4F4"
+    
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "我们需要获取你的地理位置"
+    }
+  }
+}

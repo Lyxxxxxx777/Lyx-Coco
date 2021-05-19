@@ -1,0 +1,50 @@
+<!--pages/giftcard/giftcard.wxml-->
+<div class="toptext">选择你的真心话，送出你的礼品卡</div>
+<div class="cardbox">
+    <div wx:if="{{isShowBigCard!=-1}}" class="mengban"></div>
+    <div wx:if="{{isShowBigCard!=-1}}" class="closebigcard" bindtap="closeBigCard">×</div>
+    <div wx:if="{{isShowDetail%2==1}}" class="detailbox">
+        <div class="dettiltle">{{allGiftCardList[isShowBigCard].cardName}}</div>
+        <div class="detprice"><span>￥</span>{{allGiftCardList[isShowBigCard].cardPrice}}</div>
+        <div class="detdes">{{allGiftCardList[isShowBigCard].cardDes}}</div>
+        <div class="dettime">有效期{{allGiftCardList[isShowBigCard].cardLongterm/(1000*3600*24)}}天</div>
+        <div class="buybuy" bindtap="buyCard">购买</div>
+    </div>
+
+    <ul>
+        <li wx:for="{{allGiftCardList}}" wx:key="_id" class="{{isShowBigCard==index?'bigbig':''}}" bindtap="showBigCard" data-index="{{index}}">
+            <image mode="widthFix" src="{{item.cardImage}}"></image>
+        </li>
+        <!-- <li class="{{isShowBigCard==0?'bigbig':''}}" bindtap="showBigCard">
+            <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cYvs8H.png"></image>
+        </li>
+        <li>
+            <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cYvy2d.png"></image>
+        </li>
+        <li>
+            <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cYv6xA.png"></image>
+        </li>
+        <li>
+            <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cYvgKI.png"></image>
+        </li>
+        <li>
+            <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cYv2rt.png"></image>
+        </li>
+        <li>
+            <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cYvfVf.png"></image>
+        </li>
+        <li>
+            <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cYvIPg.png"></image>
+        </li>
+        <li>
+            <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cYv4IS.png"></image>
+        </li>
+        <li>
+            <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cYvoGQ.png"></image>
+        </li> -->
+    </ul>
+</div>
+
+<div class="btmbox {{isShowBigCard==-1?'':'seecard'}}" bindtap="{{isShowBigCard==-1?'gotoPagemygiftcard':'seeCard'}}">
+    {{isShowBigCard==-1?'我的礼品卡':'查看详情'}}
+</div>

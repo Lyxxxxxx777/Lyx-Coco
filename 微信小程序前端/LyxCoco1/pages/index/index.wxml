@@ -1,0 +1,64 @@
+<!--index.wxml-->
+
+<swiper autoplay circular indicator-dots >
+    <swiper-item><image mode="widthFix" src="http://photogz.photo.store.qq.com/psc?/V54F3UeA1A09VI4TWkvF44gia32Kca6T/05RlWl8gsTOH*Z17MtCBzDiqYs1KtQCDyzhcxQEP.o2jTnsjVU..i6pyRz1EJkF.lgvVskUNTV2RboJ*p0cwDg!!/b&amp;bo=ZQQPA2UEDwMRADc!&rf=viewer_311"></image>
+    </swiper-item>
+    <swiper-item><image mode="widthFix" src="http://a1.qpic.cn/psc?/V54F3UeA1A09VI4TWkvF44gia32Kca6T/05RlWl8gsTOH*Z17MtCBzBd8vgqqq4D5NOCO99hd3YMbOC8kCLljNI*xhXRuQ3KC.Fin7MhKTWOmpHRH.IymKg!!/b&ek=1&kp=1&pt=0&bo=ZQQPA2UEDwMRADc!&tl=1&vuin=3155242480&tm=1614513600&sce=50-1-1&rf=viewer_311"></image>
+    </swiper-item>
+    <swiper-item><image mode="widthFix" src="http://a1.qpic.cn/psc?/V54F3UeA1A09VI4TWkvF44gia32Kca6T/05RlWl8gsTOH*Z17MtCBzHKPw3h3jwsFculzCF.V8piHuLp1zuhzxZAoxhLFOLi4GiNj02hL9ECISCjxItegyQ!!/b&ek=1&kp=1&pt=0&bo=ZQQPA2UEDwMRADc!&tl=1&vuin=3155242480&tm=1614513600&sce=50-1-1&rf=viewer_311"></image>
+    </swiper-item>
+    <swiper-item><image mode="widthFix" src="http://a1.qpic.cn/psc?/V54F3UeA1A09VI4TWkvF44gia32Kca6T/05RlWl8gsTOH*Z17MtCBzHX1JiRweEcFJlokuIWf2YzcmfaEaMFDepl3XTzHEK1THLezbpyi.2PuJF27rtIJ0w!!/b&ek=1&kp=1&pt=0&bo=ZQQPA2UEDwMRADc!&tl=1&vuin=3155242480&tm=1614513600&sce=50-1-1&rf=viewer_311"></image>
+    </swiper-item>
+    <swiper-item><image mode="widthFix" src="http://a1.qpic.cn/psc?/V54F3UeA1A09VI4TWkvF44gia32Kca6T/05RlWl8gsTOH*Z17MtCBzDWU.vCGAR6RM5HeR7rhSl1rLNGKN2J5WgAQfiY9jXHgVgDNtffjLeXdHm*cI4*btA!!/b&ek=1&kp=1&pt=0&bo=ZQQZA2UEGQMRADc!&tl=1&vuin=3155242480&tm=1614513600&sce=50-1-1&rf=viewer_311"></image>
+    </swiper-item>
+</swiper>
+
+<view class="newsbox">
+    <view class="zzdd" bindtap="gotoPageorder">
+        <image src="/image/zzdjicon.png"></image>
+        <p>自助点单</p>
+        <p>预约免排队</p>
+    </view>
+    <view class="czyh" bindtap="czyhTips">
+        <image src="/image/czyhicon.png"></image>
+        <p>超值优惠</p>
+        <p>囤券福利多</p>
+    </view>
+    <view class="dljh" bindtap="gotoPagelightplan">
+        <p>点亮计划</p>
+        <p>多单有礼 满五即赠</p>
+        <image mode="widthFix" src="/image/dljhicon.png"></image>
+        <p>每天限点亮一次</p>
+    </view>
+    <view class="zxhd" bindtap="gotoPagenewpro">
+        <span>最新活动：</span><span>新品“雪耳系列”来圈“粉”了！</span>
+    </view>
+    <view class="lpk" bindtap="gotoPagegiftcard">
+        <image src="/image/lpkicon.png"></image>
+        <p>礼品卡</p>
+        <p>请TA喝一杯</p>
+    </view>
+    <view class="jjxd" bindtap="gotoPagesealim">
+        <image src="/image/jjxdicon.png"></image>
+        <p>季节限定</p>
+        <p>围观当季限定饮品</p>
+    </view>
+</view>
+<!-- <view class="tabbar">
+    <view class="index active">
+        <image src="/image/home1.png"></image>
+        <view class="text">首页</view>
+    </view>
+    <view class="order" href = "/pages/order/order.wxml">
+        <image src="/image/order0.png"></image>
+        <view class="text">点单</view>
+    </view>
+    <view class="bill">
+        <image src="/image/bill0.png"></image>
+        <view class="text">订单</view>
+    </view>
+    <view class="mine">
+        <image src="/image/mine0.png"></image>
+        <view class="text">我的</view>
+    </view>
+</view> -->

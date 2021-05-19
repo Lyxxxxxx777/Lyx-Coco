@@ -1,0 +1,16 @@
+<!--pages/lightplan/lightplan.wxml-->
+<div class="headbg"></div>
+<div class="beefbox">
+    <p>点亮5个小精灵即可解锁超值券包哦!</p>
+    <div class="tips"><p>已点亮<span>{{beefNumber>5?5:beefNumber}}</span>个，<span>{{beefNumber>5?0:5-beefNumber}}</span>个等待点亮 </p><p class="showtips">ⓘ</p></div>
+    <div class="fivebeef">
+        <image src="{{beefNumber>0?'https://s3.ax1x.com/2021/03/08/6lWefg.png':''}}" mode="widthFix" class="beef {{beefNumber>0?'onin':''}}" style="transform:rotate(0deg)"></image>
+        <image src="{{beefNumber>1?'https://s3.ax1x.com/2021/03/08/6lWefg.png':''}}" mode="widthFix" class="beef {{beefNumber>1?'onin':''}}" style="transform:rotate(-20deg)"></image>
+        <image src="{{beefNumber>2?'https://s3.ax1x.com/2021/03/08/6lWefg.png':''}}" mode="widthFix" class="beef {{beefNumber>2?'onin':''}}" style="transform:rotate(-30deg)"></image>
+        <image src="{{beefNumber>3?'https://s3.ax1x.com/2021/03/08/6lWefg.png':''}}" mode="widthFix" class="beef {{beefNumber>3?'onin':''}}" style="transform:rotate(-45deg)"></image>
+        <image src="{{beefNumber>4?'https://s3.ax1x.com/2021/03/08/6lWefg.png':''}}" mode="widthFix" class="beef {{beefNumber>4?'':'onin'}}" style="transform:rotate(-55deg)"></image>
+    </div>
+</div>
+<div class="btn {{(beefNumber>=5)&&(isHaveThisYYMM==-1)?'act':''}}" bindtap="lijijiesuo">立即解锁</div>
+<div class="line"></div>
+<image class="emptybox" mode="widthFix" src="https://s3.ax1x.com/2021/03/08/6lWATf.png"></image>

@@ -1,0 +1,90 @@
+<!--pages/mygiftcard/mygiftcard.wxml-->
+<div class="toptext">选择你的真心话，送出你的礼品卡</div>
+<div class="cardbox">
+    <div wx:if="{{isShowBigCard!=-1}}" class="mengban"></div>
+    <div wx:if="{{isShowBigCard!=-1}}" class="closebigcard" bindtap="closeBigCard">×</div>
+    <div wx:if="{{isShowDetail%2==1}}" class="detailbox">
+        <div class="dettiltle">{{userGiftCardList[isShowBigCard].cardName}}</div>
+        <div class="detprice"><span>￥</span>{{userGiftCardList[isShowBigCard].cardPrice}}</div>
+        <div class="detdes">{{userGiftCardList[isShowBigCard].cardDes}}</div>
+        <div class="dettime"><b>赠予人：</b><span class="nick">{{userGiftCardList[isShowBigCard].userName}}</span></div>
+        <div class="dettime"><b>赠予人祝福：</b><span class="bles">{{userGiftCardList[isShowBigCard].userBlessing}}</span></div>
+        <div class="dettime"><b>可用金额：</b><span>￥{{userGiftCardList[isShowBigCard].cardPrice}}.00</span></div>
+        <div class="dettime"><b>能否转赠：</b><span>{{userGiftCardList[isShowBigCard].cardGive==true?'可以赠送':'不可再赠送'}}</span></div>
+        <div class="dettime"><b>购买日期：</b><span>{{goumaishijian}}</span></div>
+        <div class="dettime" wx:if="{{youxiaoqizhi!='NaN-NaN-NaN'}}"><b>有效期至：</b><span>{{youxiaoqizhi}}</span></div>
+        <div class="dettime" wx:if="{{youxiaoqizhi=='NaN-NaN-NaN'}}"><b>有效期至：</b><span>永久</span></div>
+        <div wx:if="{{userGiftCardList[isShowBigCard].cardGive==true}}" class="givegive" bindtap="copyCDKey">赠予</div>
+        <div wx:if="{{userGiftCardList[isShowBigCard].cardPrice>0}}" class="useuse" bindtap="gotoPageorder">去使用</div>
+    </div>
+
+    <ul>
+        <li wx:for="{{userGiftCardList}}" wx:key="_id" class="{{isShowBigCard==index?'bigbig':''}} {{isShowDetail%2==1?'mohule':''}} {{item.cardPrice!=9999?'':'newnew'}}" bindtap="showBigCard" data-index="{{index}}">
+            <image mode="widthFix" src="{{item.cardImage}}"></image>
+            <div wx:if="{{(isShowBigCard!=index)&&(item.cardPrice<=0)}}" class="userd">已使用</div>
+            <div wx:if="{{(isShowBigCard!=index)&&(item.cardPrice>=0)&&(item.cardExpirationTime<currentTime)}}" class="userd">已过期</div>
+        </li>
+        <!-- <li>
+            <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cJTb6S.png"></image>
+        </li>
+        <li>
+            <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cJL0Gn.png"></image>
+        </li>
+        <li>
+            <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cJHa5R.png"></image>
+        </li>
+        <li>
+            <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cYZpZQ.png"></image>
+        </li>
+        <li>
+            <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cYKK8s.png"></image>
+        </li>
+        <li>
+            <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cYM4fJ.png"></image>
+            <div class="userd">已过期</div>
+        </li>
+        <li>
+            <image mode="widthFix" src="https://z3.ax1x.com/2021/04/08/cYMIp9.png"></image>
+            <div class="userd">已使用</div>
+        </li> -->
+    </ul>
+</div>
+
+<!-- <div class="btmbox" bindtap="openCDK">
+    兑换礼品卡
+</div> -->
+
+<div class="btmbox {{isShowBigCard==-1?'':'seecard'}}" bindtap="{{isShowBigCard==-1?'openCDK':'seeCard'}}">
+    {{isShowBigCard==-1?'兑换礼品卡':'查看详情'}}
+</div>
+
+<div wx:if="{{isCDKeyShow}}" class="exchangebox">
+    <div class="exchange">
+        <div class="closeex" bindtap="closeCDK">×</div>
+        <div class="dhlpk">兑换礼品卡</div>
+        <input class="cdk" bindinput="getCDKVal" placeholder="输入CDKey"/>
+        <div class="exbtn" bindtap="clcikExchange">兑 换</div>
+    </div>
+</div>
+
+<!-- //兑换成功 获得礼物 -->
+<div wx:if="{{SuccessfulExchange}}" class="getgiftbox">
+    <div class="opengift" bindtap="openGift" wx:if="{{isOpenGift==0}}">🎁</div>
+    <div class="cinfobox" wx:if="{{isShowGiftInfo}}">
+        <div class="ctop">
+            <div>恭喜获得<span class="nick"> {{currentGiftInfo[0].userName}} </span>送给你的</div>
+            <div><span class="cname">“{{currentGiftInfo[0].cardName}}”</span>礼品卡</div>
+        </div>
+        <div class="cbtm">
+            <div class="cble">{{currentGiftInfo[0].userBlessing}}</div>
+            <div>价值<span class="cpri">￥{{currentGiftInfo[0].cardPrice}}</span></div>
+            <div wx:if="{{giftInfoTime!='NaN-NaN-NaN'}}">有效期至{{giftInfoTime}}</div>
+            <div wx:if="{{giftInfoTime=='NaN-NaN-NaN'}}">有效期至 永久</div>
+        </div>
+    </div>
+    <div class="cimgbox {{isOpenGift==1?'fall':''}}">
+        <image mode="widthFix" src="{{currentGiftInfo[0].cardImage}}"></image>
+    </div>
+
+    <div wx:if="{{isShowGiftInfo}}" class="shouxia" bindtap="clickShouxia">开心收下</div>
+</div>

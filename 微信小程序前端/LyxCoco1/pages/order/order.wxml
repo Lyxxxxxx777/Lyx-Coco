@@ -1,0 +1,183 @@
+<!--pages/order/order.wxml-->
+<div >
+<swiper autoplay circular indicator-dots >
+    <swiper-item><image mode="widthFix" src="http://a1.qpic.cn/psc?/V54F3UeA1A09VI4TWkvF44gia32Kca6T/05RlWl8gsTOH*Z17MtCBzBYYs6qrJ3fk9qFzpuvHR9jdMWsoTX21jQuzGQKN*2h8KVwnjU.Q1aJymGgszBPAQA!!/b&ek=1&kp=1&pt=0&bo=ZQQcAmUEHAIRADc!&tl=1&vuin=3155242480&tm=1615215600&sce=50-1-1&rf=viewer_311"></image>
+    </swiper-item>
+    <swiper-item><image mode="widthFix" src="http://a1.qpic.cn/psc?/V54F3UeA1A09VI4TWkvF44gia32Kca6T/8v1c6OdZLSE3kzDE6fnRyoKWBJ.DRlNhrvRnKkqrJgrx2BH17R*NJ5uv5IJLk5fJp2QGCVyPHdpQLJroWtiEeEoNoa7diFX4z55nm.7vSJY!/b&ek=1&kp=1&pt=0&bo=ZQQcAmUEHAIRADc!&tl=3&vuin=3155242480&tm=1615215600&sce=60-2-2&rf=viewer_311"></image>
+    </swiper-item>
+</swiper>
+<div class="midbox">
+    <div class="nowstore" bindtap="gotoPageaddress">
+        <image  mode="widthFix" src="/image/weizhi.png"></image>
+        <p>{{storeRegExp}}</p>
+    </div>
+    <div class="searchbox">
+        <input type="text" placeholder="搜索奶茶" wx:if="{{!infoIsopening&&isOpenCart%2==0}}" bindinput="search"></input>
+        <image class="searchicon"  mode="widthFix" src="/image/chengsousuo.png"></image>
+    </div>
+</div>
+
+<!-- 猜你喜欢 小蜜蜂 -->
+<div class="cnxhbox {{isShowCnxh==1?'showcnxh':''}}" bindtap="showCnxh" wx:if="{{isShowbeef}}" >
+    <image class="xmfimg" mode="widthFix" src="/image/xiaomif.png"></image>    
+</div>
+<div class="tuijianbox" wx:if="{{isShowCnxh}}" catchtouchmove="stopmove">
+    <div class="cnxhtext">
+        <div>猜你喜欢</div>
+    </div>
+    <!-- <div class="closeCnxh">×</div> -->
+    <div class="neverCnxh" bindtap="neverShowCnxh">不再显示</div>
+
+    <div class="maxbox {{isShowCnxhDH==1?'zhuanzheng':''}}">
+
+        <div class="teabox t1 {{cnxhtem1==1?'zheng':''}}" bindtap="showCnxhtem1" bindtouchmove="showCnxhtem1">
+            <image mode="widthFix" src="{{teaInfo[cnxhTemIndex].teaImage}}"></image>
+            <div class="teaname">{{teaInfo[cnxhTemIndex].teaName}}</div>
+            <div class="teaprice">￥{{teaInfo[cnxhTemIndex].teaPrice}}.0</div>
+            <div class="plusbtn" catchtap="openTeaInfo" data-index="{{cnxhTemIndex}}">+</div>
+        </div>
+        <div class="teabox t2 {{cnxhxl2==1?'zheng':''}}" bindtap="showCnxhxl2" bindtouchmove="showCnxhxl2">
+            <image mode="widthFix" src="{{teaInfo[cnxhHourIndex].teaImage}}"></image>
+            <div class="teaname">{{teaInfo[cnxhHourIndex].teaName}}</div>
+            <div class="teaprice">￥{{teaInfo[cnxhHourIndex].teaPrice}}.0</div>
+            <div class="plusbtn" catchtap="openTeaInfo" data-index="{{cnxhHourIndex}}">+</div>
+        </div>
+        <div class="teabox t3 {{cnxhgm3==1?'zheng':''}}" bindtap="showCnxhgm3" bindtouchmove="showCnxhgm3">
+            <image mode="widthFix" src="{{teaInfo[cnxhBillIndex].teaImage}}"></image>
+            <div class="teaname">{{teaInfo[cnxhBillIndex].teaName}}</div>
+            <div class="teaprice">￥{{teaInfo[cnxhBillIndex].teaPrice}}.0</div>
+            <div class="plusbtn" catchtap="openTeaInfo" data-index="{{cnxhBillIndex}}">+</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="menubox">
+    <!-- 左侧菜单 -->
+    <scroll-view class="left_menu" scroll-y scroll-with-animation="true" >
+        <div wx:for="{{teaType}}" wx:for-item="item1" wx:key="typeId" class="lefttype {{currentIndexStyle!=index?'':'active'}}" bindtap="handleItemTap" data-index="{{index}}">
+            <image mode="widthFix" src="{{currentIndexStyle!=index?item1.typeImage0:item1.typeImage1}}"></image>
+            <p class="typename">{{item1.typeName}}</p>
+        </div>
+    </scroll-view>
+
+    <!-- 右侧内容 -->
+    <scroll-view class="right_content" scroll-y scroll-with-animation="true" enable-back-to-top scroll-top="{{heightArr[currentIndex]}}" bindscroll="scroll">
+        <div class="righttea" wx:for="{{teaType}}" wx:for-item="item2" wx:key="typeId" >
+            <div class="teatypebox">
+                <div class="teatypename">{{item2.typeName}}</div>
+                <div class="teatypedes">{{item2.typeDescribe}}</div>
+            </div>
+
+            <div class="teabox" wx:for="{{searchVal?searchArr:teaInfo}}" wx:for-item="item3" wx:key="teaId" wx:if="{{item3.typeId==item2.typeId}}">
+                <image mode="widthFix" src="{{item3.teaImage}}"></image>
+                <div class="teaname">{{item3.teaName}}</div>
+                <div class="teaprice">￥{{item3.teaPrice}}.0</div>
+                <div wx:if="{{!searchVal}}" class="plusbtn" bindtap="openTeaInfo" data-index="{{index}}">+</div>
+            </div>
+
+        </div>
+    </scroll-view>
+</div>
+
+<!-- 购物车bar -->
+<div class="carbox">
+    <div class="horbar">
+        <div class="price"><span class="yuan">￥</span>{{cartTotalPrice}}.0</div>
+        <div bindtap="gotoCheckOut" class="btn {{cartTotalPrice==0?'':'btnact'}}">去结算</div>
+    </div>
+    <div class="bagimage" bindtap="openCart">
+        <image mode="widthFix" src="{{cartTotalPrice==0?'https://s3.ax1x.com/2021/03/08/6lWoAf.png':'https://s3.ax1x.com/2021/03/08/6lWq3Q.png'}}"></image>
+        <!-- <image wx:if="{{cartTotalPrice}}" mode="widthFix" src="https://s3.ax1x.com/2021/03/08/6lWq3Q.png"></image> -->
+        <div wx:if="{{cartTotalPrice}}" class="numpot">{{cartTotalNumber}}</div>
+    </div>
+</div>
+
+<!-- ////////////////////////////////打开购物车详情 -->
+<div class="carlistbox {{isOpenCart%2==0?'':'opencart'}}">
+    <div class="theotherbox" bindtap="openCart"></div>
+    <div class="thebox">
+        <div class="myselected">
+            <div class="cltop">Lyx&Coco</div>
+            <div class="yxcp">已选产品</div>
+            <div class="clearbtn" bindtap="clearCart">
+                <image mode="widthFix" src="https://z3.ax1x.com/2021/03/27/6zZTBD.png"></image> <span>清空</span>
+            </div>
+        </div>
+        <div class="kkry" wx:if="{{!cartInfo.length}}">空空如也~</div>
+        <div class="cartealist">
+            <ul>
+                <li class="oneteainfo" wx:for="{{cartInfo}}" wx:key="index" >
+                    <div class="tibox">
+                        <p class="cteaname">{{item.teaName}}</p>
+                        <p wx:if="{{item.feedSelected||item.temSelected||item.sweetSelected}}" class="cteafeed">{{item.feedSelected}}/{{item.temSelected}}/{{item.sweetSelected}}</p>
+                        <p class="cteaprice">￥{{item.teaPrice + item.feedPrice}}.0</p>
+                    </div>
+                    <div class="countbox">
+                        <div data-index="{{index}}" bindtap="reduceTea" class="reduce"><div class="reducein"></div></div>
+                        <div class="teanumber">{{item.teaNumber}}</div>
+                        <div data-index="{{index}}" bindtap="addTea" class="add">+</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!--/////////// 点一杯奶茶选择加料、温度、糖度 -->
+<div class="teadetinfobox" wx:if="{{infoIsopening}}">
+    <div class="tdibcenter">
+        <div class="closetea" bindtap="closeTeaInfo">×</div>
+        <image mode="widthFix" src="{{teaInfo[currentTeaIndex].teaImage}}"></image>
+        <div class="teamsgbox">
+            <div class="teaname">{{teaInfo[currentTeaIndex].teaName}}</div>
+            <div class="teadescribe">{{teaInfo[currentTeaIndex].teaDescribe}}</div>
+        </div>
+        <div class="imiddlebox">
+            <div class="feedbox" wx:if="{{teaInfo[currentTeaIndex].feedArr[0].feedName}}">
+                <p>加料</p>
+                <ul class="feedopt">
+                    <li wx:for="{{teaInfo[currentTeaIndex].feedArr}}" wx:key="index" bindtap="getFeed" class="myfeed {{temporaryTeaInfo.feedSelected!=item.feedName?'':'feedact'}}" wx:if="{{item.feedName}}" data-index="{{index}}">{{item.feedName}}</li>
+                    <!-- <li bindtap="getFeed" data-index="{{teaInfo[currentTeaIndex].feedOption1}}" class="myfeed {{temporaryTeaInfo.feedSelected!=teaInfo[currentTeaIndex].feedOption1?'':'feedact'}}" wx:if="{{teaInfo[currentTeaIndex].feedOption1}}">{{teaInfo[currentTeaIndex].feedOption1}}</li>
+                    <li bindtap="getFeed" data-index="{{teaInfo[currentTeaIndex].feedOption2}}" class="myfeed {{temporaryTeaInfo.feedSelected!=teaInfo[currentTeaIndex].feedOption2?'':'feedact'}}" wx:if="{{teaInfo[currentTeaIndex].feedOption2}}">{{teaInfo[currentTeaIndex].feedOption2}}</li>
+                    <li bindtap="getFeed" data-index="{{teaInfo[currentTeaIndex].feedOption3}}" class="myfeed {{temporaryTeaInfo.feedSelected!=teaInfo[currentTeaIndex].feedOption3?'':'feedact'}}" wx:if="{{teaInfo[currentTeaIndex].feedOption3}}">{{teaInfo[currentTeaIndex].feedOption3}}</li>
+                    <li bindtap="getFeed" data-index="{{teaInfo[currentTeaIndex].feedOption4}}" class="myfeed {{temporaryTeaInfo.feedSelected!=teaInfo[currentTeaIndex].feedOption4?'':'feedact'}}" wx:if="{{teaInfo[currentTeaIndex].feedOption4}}">{{teaInfo[currentTeaIndex].feedOption4}}</li>
+                    <li bindtap="getFeed" data-index="{{teaInfo[currentTeaIndex].feedOption5}}" class="myfeed {{temporaryTeaInfo.feedSelected!=teaInfo[currentTeaIndex].feedOption5?'':'feedact'}}" wx:if="{{teaInfo[currentTeaIndex].feedOption5}}">{{teaInfo[currentTeaIndex].feedOption5}}</li>
+                    <li bindtap="getFeed" data-index="{{teaInfo[currentTeaIndex].feedOption6}}" class="myfeed {{temporaryTeaInfo.feedSelected!=teaInfo[currentTeaIndex].feedOption6?'':'feedact'}}" wx:if="{{teaInfo[currentTeaIndex].feedOption6}}">{{teaInfo[currentTeaIndex].feedOption6}}</li>
+                    <li bindtap="getFeed" data-index="{{teaInfo[currentTeaIndex].feedOption7}}" class="myfeed {{temporaryTeaInfo.feedSelected!=teaInfo[currentTeaIndex].feedOption7?'':'feedact'}}" wx:if="{{teaInfo[currentTeaIndex].feedOption7}}">{{teaInfo[currentTeaIndex].feedOption7}}</li> -->
+                </ul>
+            </div>
+            <div class="feedbox" wx:if="{{teaInfo[currentTeaIndex].temArr[0]}}">
+                <p>温度</p>
+                <ul class="feedopt">
+                    <li wx:for="{{teaInfo[currentTeaIndex].temArr}}"  wx:key="index" bindtap="getTem" data-index="{{index}}" class="myfeed {{temporaryTeaInfo.temSelected!=item?'':'feedact'}}" wx:if="{{item}}">{{item}}</li>
+                    <!-- <li bindtap="getTem" data-index="{{teaInfo[currentTeaIndex].temOption1}}" class="myfeed {{temporaryTeaInfo.temSelected!=teaInfo[currentTeaIndex].temOption1?'':'feedact'}}" wx:if="{{teaInfo[currentTeaIndex].temOption1}}">{{teaInfo[currentTeaIndex].temOption1}}</li>
+                    <li bindtap="getTem" data-index="{{teaInfo[currentTeaIndex].temOption2}}" class="myfeed {{temporaryTeaInfo.temSelected!=teaInfo[currentTeaIndex].temOption2?'':'feedact'}}" wx:if="{{teaInfo[currentTeaIndex].temOption2}}">{{teaInfo[currentTeaIndex].temOption2}}</li>
+                    <li bindtap="getTem" data-index="{{teaInfo[currentTeaIndex].temOption3}}" class="myfeed {{temporaryTeaInfo.temSelected!=teaInfo[currentTeaIndex].temOption3?'':'feedact'}}" wx:if="{{teaInfo[currentTeaIndex].temOption3}}">{{teaInfo[currentTeaIndex].temOption3}}</li>
+                    <li bindtap="getTem" data-index="{{teaInfo[currentTeaIndex].temOption4}}" class="myfeed {{temporaryTeaInfo.temSelected!=teaInfo[currentTeaIndex].temOption4?'':'feedact'}}" wx:if="{{teaInfo[currentTeaIndex].temOption4}}">{{teaInfo[currentTeaIndex].temOption4}}</li>
+                    <li bindtap="getTem" data-index="{{teaInfo[currentTeaIndex].temOption5}}" class="myfeed {{temporaryTeaInfo.temSelected!=teaInfo[currentTeaIndex].temOption5?'':'feedact'}}" wx:if="{{teaInfo[currentTeaIndex].temOption5}}">{{teaInfo[currentTeaIndex].temOption5}}</li> -->
+                </ul>
+            </div>
+            <div class="feedbox" wx:if="{{teaInfo[currentTeaIndex].sweetArr[0]}}">
+                <p>糖度</p>
+                <ul class="feedopt">
+                    <li wx:for="{{teaInfo[currentTeaIndex].sweetArr}}"  wx:key="index" bindtap="getSweet" data-index="{{index}}" class="myfeed {{temporaryTeaInfo.sweetSelected!=item?'':'feedact'}}" wx:if="{{item}}">{{item}}</li>
+                    <!-- <li bindtap="getSweet" data-index="{{teaInfo[currentTeaIndex].sweetOption1}}" class="myfeed {{temporaryTeaInfo.sweetSelected!=teaInfo[currentTeaIndex].sweetOption1?'':'feedact'}}" wx:if="{{teaInfo[currentTeaIndex].sweetOption1}}">{{teaInfo[currentTeaIndex].sweetOption1}}</li>
+                    <li bindtap="getSweet" data-index="{{teaInfo[currentTeaIndex].sweetOption2}}" class="myfeed {{temporaryTeaInfo.sweetSelected!=teaInfo[currentTeaIndex].sweetOption2?'':'feedact'}}" wx:if="{{teaInfo[currentTeaIndex].sweetOption2}}">{{teaInfo[currentTeaIndex].sweetOption2}}</li>
+                    <li bindtap="getSweet" data-index="{{teaInfo[currentTeaIndex].sweetOption3}}" class="myfeed {{temporaryTeaInfo.sweetSelected!=teaInfo[currentTeaIndex].sweetOption3?'':'feedact'}}" wx:if="{{teaInfo[currentTeaIndex].sweetOption3}}">{{teaInfo[currentTeaIndex].sweetOption3}}</li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="ibottombox">
+            <div class="thisprice"><span>￥</span>{{temporaryTeaInfo.feedPrice+teaInfo[currentTeaIndex].teaPrice}}.0</div>
+            <div class="thisfts">
+                <span wx:if="{{temporaryTeaInfo.feedSelected}}">{{temporaryTeaInfo.feedSelected}}</span>
+                <span wx:if="{{temporaryTeaInfo.temSelected}}">/{{temporaryTeaInfo.temSelected}}</span>
+                <span wx:if="{{temporaryTeaInfo.sweetSelected}}">/{{temporaryTeaInfo.sweetSelected}}</span>
+            </div>
+            <div class="pluscar" bindtap="addToCart">加入购物车</div>
+        </div>
+    </div>
+</div>
+</div>

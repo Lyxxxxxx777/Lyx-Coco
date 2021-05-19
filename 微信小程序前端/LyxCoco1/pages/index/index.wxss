@@ -1,0 +1,199 @@
+/**index.wxss**/
+page{
+  background: #F4F4F4;
+}
+.clearfix::after{
+  content:" ";
+  display: block;
+  clear: both;
+}
+
+swiper{
+  width: 100%;
+  height: 69.6vw;
+}
+swiper image{
+  width: 100%;
+}
+/* .wx-swiper-dots{
+  margin-bottom: 20px;
+} */
+
+.newsbox{
+  width: 89.3vw;
+  height: 165vw;
+  margin:5.33vw auto 0px;
+  position: relative;
+  color: #FF8305;
+  /* color: #333; */
+}
+/* margin = 15px ; width = 160px */
+.newsbox>view{
+  border-radius: 5px;
+  /* border:1px solid #B3B3B3 ; */
+  border:1px solid #FFCF9E ;
+  background: #fff;
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+  flex-direction:column;
+  align-items:center;
+  text-align: center;
+}
+.newsbox>view>image{
+  width: 50%;
+  height: 50%;
+}
+.newsbox>view>p:nth-child(2){
+  /* color: #FF8305; */
+  font-weight: 600;
+  font-size: 24px;
+}
+.newsbox>view>p:nth-child(3){
+  color: #868B8E;
+  font-weight: 200;
+  font-size: 12px;
+}
+
+.newsbox .zzdd{
+  width: 42.66vw;
+  height: 42.66vw;
+  left: 0;
+  top: 0;
+ 
+}
+.newsbox .czyh{
+  width: 42.66vw;
+  height: 42.66vw;
+  left: 0;
+  top: 112.33vw;
+}
+.newsbox .dljh{
+  width: 42.66vw;
+  height: 89.33vw;
+  left: 46.66vw;
+  top:0
+}
+.newsbox .dljh image{
+  width: 80%;
+}
+.newsbox .dljh p:nth-child(1){
+  /* color: #FF8305; */
+  font-weight: 600;
+  font-size: 24px;
+}
+.newsbox .dljh p:nth-child(2){
+  /* color: #FF8305; */
+  margin-top: -20px;
+  font-weight: 600;
+  font-size: 14px;
+}
+.newsbox .dljh p:nth-child(4){
+  color: #868B8E;
+  font-weight: 200;
+  font-size: 12px;
+}
+.newsbox .zxhd{
+  width: 89.33vw;
+  height: 15vw;
+  left: 0;
+  top:93.33vw;
+  justify-content: start;
+  flex-direction:row;
+}
+
+.newsbox .zxhd span:nth-child(1){
+  /* color: #FF8305; */
+  font-weight: 600;
+  font-size: 18px;
+  margin-left: 5vw;
+  flex-shrink: 0;
+}
+.newsbox .zxhd span:nth-child(2){
+  color: #868B8E;
+  font-size: 14px;
+}
+.newsbox .lpk{
+  width: 42.66vw;
+  height: 42.66vw;
+  left: 0;
+  top: 46.66vw;
+}
+.newsbox .jjxd{
+  width: 42.66vw;
+  height: 42.66vw;
+  left: 46.66vw;
+  top: 112.33vw;
+}
+.newsbox>view:hover{
+  background: #eee;
+}
+/* .banner{
+  width: 375px;
+  height: 261px;
+  margin:0 auto ;
+  background-color: pink;
+}
+.banner ul{
+  width: 2000px;
+  height: 261px;
+
+}
+.banner li{
+  float: left;
+  width: 375px;
+  height: 261px;
+}
+.banner li:nth-child(1){
+  background: url(http://photogz.photo.store.qq.com/psc?/V54F3UeA1A09VI4TWkvF44gia32Kca6T/05RlWl8gsTOH*Z17MtCBzDiqYs1KtQCDyzhcxQEP.o2jTnsjVU..i6pyRz1EJkF.lgvVskUNTV2RboJ*p0cwDg!!/b&amp;bo=ZQQPA2UEDwMRADc!&rf=viewer_311) no-repeat center center;
+  background-size: 100%;
+}
+.banner li:nth-child(2){
+  background: url(http://a1.qpic.cn/psc?/V54F3UeA1A09VI4TWkvF44gia32Kca6T/05RlWl8gsTOH*Z17MtCBzBd8vgqqq4D5NOCO99hd3YMbOC8kCLljNI*xhXRuQ3KC.Fin7MhKTWOmpHRH.IymKg!!/b&ek=1&kp=1&pt=0&bo=ZQQPA2UEDwMRADc!&tl=1&vuin=3155242480&tm=1614513600&sce=50-1-1&rf=viewer_311) no-repeat center center;
+  background-size: 100%;
+}
+.banner li:nth-child(3){
+  background: url(http://a1.qpic.cn/psc?/V54F3UeA1A09VI4TWkvF44gia32Kca6T/05RlWl8gsTOH*Z17MtCBzHKPw3h3jwsFculzCF.V8piHuLp1zuhzxZAoxhLFOLi4GiNj02hL9ECISCjxItegyQ!!/b&ek=1&kp=1&pt=0&bo=ZQQPA2UEDwMRADc!&tl=1&vuin=3155242480&tm=1614513600&sce=50-1-1&rf=viewer_311) no-repeat center center;
+  background-size: 100%;
+}
+.banner li:nth-child(4){
+  background: url(http://a1.qpic.cn/psc?/V54F3UeA1A09VI4TWkvF44gia32Kca6T/05RlWl8gsTOH*Z17MtCBzHX1JiRweEcFJlokuIWf2YzcmfaEaMFDepl3XTzHEK1THLezbpyi.2PuJF27rtIJ0w!!/b&ek=1&kp=1&pt=0&bo=ZQQPA2UEDwMRADc!&tl=1&vuin=3155242480&tm=1614513600&sce=50-1-1&rf=viewer_311) no-repeat center center;
+  background-size: 100%;
+}
+.banner li:nth-child(5){
+  background: url(http://a1.qpic.cn/psc?/V54F3UeA1A09VI4TWkvF44gia32Kca6T/05RlWl8gsTOH*Z17MtCBzDWU.vCGAR6RM5HeR7rhSl1rLNGKN2J5WgAQfiY9jXHgVgDNtffjLeXdHm*cI4*btA!!/b&ek=1&kp=1&pt=0&bo=ZQQZA2UEGQMRADc!&tl=1&vuin=3155242480&tm=1614513600&sce=50-1-1&rf=viewer_311) no-repeat center center;
+  background-size: 100%;
+}
+.tabbar{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  background: #fff;
+  padding: 10px 0 20px 0;
+  justify-content: space-around;
+  font-size: 10px;
+  text-align: center;
+  color: #CCC;
+}
+.tabbar .index image{
+  width: 20px ;
+  height: 20px;
+}
+.tabbar .order image{
+  width: 20px ;
+  height: 20px;
+}
+.tabbar .bill image{
+  width: 20px ;
+  height: 20px;
+}
+.tabbar .mine image{
+  width: 20px ;
+  height: 20px;
+}
+.tabbar>view.active{
+  color: #000;
+} */

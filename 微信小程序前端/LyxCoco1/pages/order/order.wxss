@@ -1,0 +1,656 @@
+/* pages/order/order.wxss */
+page{
+    background: #F4F4F4;
+  }
+  div{
+    display: block;
+  }
+  swiper{
+    width: 100%;
+    height: 48vw;
+  }
+  swiper image{
+    width: 100%;
+  }
+  .midbox{
+    width: calc(100vw - 30px);
+    height: 40px;
+    padding: 15px;
+    position: relative;
+    background: #fff;
+  }
+  .nowstore{
+    width: 35vw;
+    height: 40px;
+    font-weight: 600;
+    float: left;
+  }
+  .nowstore image{
+    width: 35px;
+    display: inline-block;
+  }
+  .nowstore p {
+    font-size: 14px;
+    /* font-family: "黑体"; */
+    display: inline-block;
+    vertical-align: top;
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .searchbox{
+    width: 55vw;
+    height: 40px;
+    background: #fff;
+    border-radius: 20px;
+    border: 1px solid rgba(254,155,54,0.3);
+    float: right;
+    color: rgba(254,155,54,0.9); 
+}
+.searchbox image{
+    display: inline-block;
+    width: 20px;
+    vertical-align: top;
+    margin: 10px 10px 0 10px;
+}
+
+  .searchbox input{
+    color: rgba(254,155,54,0.9); 
+    font-size: 14px;
+    width: 40vw;
+    height: 40px;
+    display: inline-block;
+    /* text-indent: 1em; */
+    margin-left: 14px;
+}
+/* 猜你喜欢 小蜜蜂 */
+.cnxhbox{
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 0;
+  top: 30px;
+  z-index: 1999;
+  transition: all 0.6s;
+  transform: translate(30%) scale(1);
+}
+.cnxhbox.showcnxh{
+  transform: translate(-30%) scale(1.5);
+
+}
+.cnxhbox .xmfimg{
+  width: 100%;
+}
+.tuijianbox{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 1888;
+  padding: 30% 0 0px 0 ;
+}
+.tuijianbox .cnxhtext{
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 7px;
+  /* border-bottom-right-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom-left-radius: 12px; */
+  background: #fff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  border-right: 2px solid #aaa;
+  border-bottom: 2px solid #999;
+  position: fixed;
+  right: 80px;
+  top: 30px;
+  color: #ff8400;
+}
+.tuijianbox .neverCnxh{
+  position: fixed;
+  /* left: 50%; */
+  /* transform: translate(-50%); */
+  right: 10px;
+  bottom: 10px;
+  width: 120px;
+  height: 50px;
+  line-height: 50px;
+  background: #000;
+  border-radius: 25px;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+}
+.tuijianbox .maxbox{
+  width: 100vw;
+  height: 167px;
+  /* border-radius: 10px; */
+  /* border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px; */
+  position: relative;
+  margin: 0 0;
+  /* box-shadow: 0px 5px 10px 2px #444; */
+  /* overflow: hidden; */
+  transition: transform 1.5s;
+  transform-origin: center 1000px;
+  transform: rotate(30deg);
+}
+.tuijianbox .maxbox.zhuanzheng{
+  transform: rotate(0deg);
+}
+.t1{
+  transform: translate(-5vw,0) rotate(0deg);
+}
+.t2{
+  transform: translate(25vw,0) rotate(3deg);
+}
+.t3{
+  transform: translate(55vw,0) rotate(5deg);
+}
+.t1.zheng{
+  transform: translate(0,200px) rotate(0deg);
+}
+.t2.zheng{
+  transform: translate(0,200px) rotate(0deg);
+}
+.t3.zheng{
+  transform: translate(0,200px) rotate(0deg);
+}
+.tuijianbox .teabox{
+  width: 308px;
+  height: 167px;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 31px;
+  box-shadow: 0px 5px 10px 2px #444;
+  transition: transform 0.6s;
+}
+.tuijianbox .teabox image{
+  width: 308px;
+  border-radius: 10px;
+}
+.tuijianbox .teabox .teaname{
+  position: absolute;
+  right:10px;
+  top:20px;
+  font-weight: 600;
+}
+.tuijianbox .teabox .teaprice{
+  position: absolute;
+  right:10px;
+  top:50px
+}
+.tuijianbox .teabox .plusbtn{
+  position: absolute;
+  right:20px;
+  top:120px;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+/* //购物车 */
+.carbox{
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  padding: 0 10px 10px 10px;
+  bottom: 0px;
+  z-index: 1777;
+}
+.carbox .horbar{
+  width: 355px;
+  height: 50px;
+  background: #fff;
+  position: absolute;
+  border-radius: 25px;
+  box-shadow: 0px 5px 10px 2px #dadada;
+  z-index: 777;
+}
+.carbox .price{
+  position: absolute;
+  left: 85px;
+  top: 50%;
+  transform: translate(0,-50%);
+  font-size: 22px;
+  font-weight: 600;
+}
+.carbox .price .yuan{
+  font-size: 12px;
+}
+.carbox .btn{
+  width: 90px;
+  height: 50px;
+  line-height: 50px;
+  position: absolute;
+  right: 0;
+  background: #a0a0a0;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  text-align: center;
+  color: #fff;
+  font-size:16px ;
+}
+.carbox .btn.btnact{
+  background: #FF8305;
+}
+
+.carbox .bagimage{
+  z-index: 1299;
+  position: absolute;
+  left: 33px;
+  bottom: 13px;
+}
+.carbox .bagimage image{
+  display: block;
+  width: 65px;
+}
+.carbox .bagimage .numpot{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #FF8305;
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  text-align: center;
+  line-height: 20px;
+  top: -6px;
+  right: 3px;
+}
+/* 打开购物车列表详情 */
+.carlistbox{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  bottom: 0px;
+  background: rgba(0,0,0,0.4);
+  display: none;
+}
+.carlistbox .kkry{
+  margin: 50px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+}
+.carlistbox.opencart{
+  display: block;
+}
+.carlistbox .theotherbox{
+  width: 100vw;
+  height: 50vh;
+  position: absolute;
+  top: 0;
+  /* background: pink; */
+}
+.carlistbox .thebox{
+  width: 100vw;
+  max-height: 75vh;
+  position: absolute;
+  background: #fff;
+  bottom: 0;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+.carlistbox .myselected{
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  background: #fff;
+  position: relative;
+  font-weight: 600;
+  font-size: 16px;
+}
+.carlistbox .myselected .cltop{
+  z-index: 28;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  height: 30px;
+  background: #FFEDDC;
+  color: #FF8305;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 30px;
+}
+.carlistbox .yxcp{
+  margin: 20px 0 0 20px;
+}
+.carlistbox .clearbtn{
+  /* background: pink url('https://z3.ax1x.com/2021/03/27/6zZTBD.png') no-repeat center center; */
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  height: 20px;
+  display: flex;
+  /* background: pink; */
+}
+.carlistbox .clearbtn image{
+  width: 20px;
+  margin-right: 5px;
+}
+.carlistbox .clearbtn span{
+  height: 20px;
+  line-height: 20px;
+  display: block;
+
+}
+.carlistbox .cartealist{
+  padding: 0 0 75px 0;
+  width: 100%;
+  max-height: calc( 75vh - 100px);
+  background: #fff;
+  margin: 20px 0 0 0 ;
+  overflow-y: scroll;
+  transform: scale(1);
+}
+.carlistbox .cartealist ul{
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 70px;
+  /* background: pink; */
+}
+.carlistbox .cartealist .oneteainfo{
+  width: 100%;
+  /* background: pink; */
+  height: 80px;
+  padding: 10px 20px 10px 20px;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #fafafa;
+}
+
+.carlistbox .cartealist .oneteainfo .cteaname{
+  display: block;
+  font-size: 15px;
+}
+.carlistbox .cartealist .oneteainfo .cteafeed{
+  display: block;
+  font-size: 10px;
+  color: #B6B6B6;
+  margin: 2px 0 0;
+}
+.carlistbox .cartealist .oneteainfo .cteaprice{
+  display: block;
+  font-size: 14px;
+  margin: 10px 0 0;
+}
+.carlistbox .countbox{
+  display: flex;
+  align-items: center;
+}
+.carlistbox .reduce{
+  width: 15px;
+  height: 15px;
+  display: flex;
+  margin: 0 15px 0 0;
+  align-items: center;
+}
+.carlistbox .reducein{
+  width: 15px;
+  height: 3px;
+  border-radius: 1px;
+  background: #666;
+  
+}
+.carlistbox .teanumber{
+  font-size: 22px;
+  font-weight: 600;
+  color:#FF8E18 ;
+}
+.carlistbox .add{
+  font-size: 30px;
+  margin: -7px 0 0 10px;
+  
+}
+
+/* 联动菜单 */
+.menubox{
+  width: 100%;
+  height: calc( 100vh - 70px);
+  display: flex;
+  justify-content: space-between;
+  background: #F1F1F1;
+}
+
+::-webkit-scrollbar {
+  display:none;
+  width:0;
+  height:0;
+  color:transparent;
+}
+
+
+.left_menu{
+  width: 52px;
+  background:#fff;
+  padding: 0 0 60px 0;
+}
+.left_menu .lefttype{
+  width: 52px;
+  background: #fff;
+  border-left: 1px solid #fff;
+  color: #9F9E9E;
+  padding:15px 0 15px 0;
+}
+.left_menu .lefttype.active{
+  background: #F1F1F1;
+  border-left: 2px solid #FE9B36;
+  color: #000;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 5px;
+}
+.left_menu .lefttype.acttop{
+  border-bottom-right-radius: 10px;
+}
+.left_menu .lefttype.actbtm{
+  border-top-right-radius: 10px;
+}
+.left_menu .lefttype image{
+  width: 40px;
+  margin: 0 auto;
+  display: block;
+}
+.left_menu .lefttype p{
+  font-size: 10px;
+  display: block;
+  text-align: center;
+}
+
+
+.right_content{
+  width: 308px;
+  /* background: skyblue; */
+  margin: 10px auto 0;
+}
+
+.right_content .righttea{
+  padding-bottom: 70px;
+}
+.right_content .righttea .teatypebox{
+  padding: 5px 0 ;
+  background: #F1F1F1;
+}
+.right_content .righttea .teatypebox .teatypename{
+  font-size: 14px;
+  height: 15px;
+  line-height: 15px;
+  border-left: 2px solid #FE9B36;
+  display: inline-block;
+  padding: 0 0 0 5px;
+  color: #585C5E;
+}
+.right_content .righttea .teatypebox .teatypedes{
+  display: inline-block;
+  font-size: 12px;
+  height: 15px;
+  line-height: 15px;
+  color: #9FA6AB;
+  padding-left: 10px;
+}
+.right_content .teabox{
+  width: 308px;
+  height: 167px;
+  border-radius: 10px;
+  position: relative;
+  margin: 8px 0;
+}
+.right_content .teabox image{
+  width: 308px;
+  border-radius: 10px;
+}
+.right_content .teabox .teaname{
+  position: absolute;
+  right:10px;
+  top:20px;
+  font-weight: 600;
+}
+.right_content .teabox .teaprice{
+  position: absolute;
+  right:10px;
+  top:50px
+}
+.right_content .teabox .plusbtn{
+  position: absolute;
+  right:20px;
+  top:120px;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+
+/* <!--/////////// 点一杯奶茶选择加料、温度、糖度 --> */
+.teadetinfobox{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 2777;
+}
+.teadetinfobox .tdibcenter{
+  width: 350px;
+  /* max-height: 100vh;
+  overflow-y: scroll; */
+
+  /* height: 550px; */
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: 10px;
+}
+
+.teadetinfobox .tdibcenter .closetea{
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  font-size: 30px;
+}
+
+.teadetinfobox .tdibcenter image{
+  width: 100%;
+  border-radius: 10px;
+}
+
+.teadetinfobox .tdibcenter .teamsgbox{
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  right: 20px;
+  top: 60px;
+  /* font-family: '黑体'; */
+}
+
+.teadetinfobox .tdibcenter .teamsgbox .teaname{
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: end;
+}
+.teadetinfobox .tdibcenter .teamsgbox .teadescribe{
+  font-size: 10px;
+  width: 180px;
+  position: absolute;
+  right: 0;
+}
+.tdibcenter .imiddlebox{
+  max-height: 53vh;
+  overflow-y: scroll; 
+}
+.tdibcenter .feedbox{
+  width: 310px;
+  margin: 10px auto;
+  /* background: pink; */
+  
+}
+.tdibcenter .feedbox p{
+  display: block;
+  font-weight: 600;
+  font-size:14px;
+}
+.tdibcenter .feedbox .feedopt{
+  display: flex;
+  flex-wrap: wrap;
+  /* margin: 10px 0 0; */
+}
+.tdibcenter .feedbox .feedopt .myfeed{
+  min-width: 25px;
+  padding: 0 15px;
+  height: 35px;
+  border-radius: 5px;
+  line-height: 35px;
+  text-align: center;
+  display: block;
+  margin: 15px 10px 0 0;
+  font-size:12px;
+  color: #6B6B6B;
+  background: #F9F8F8;
+}
+.tdibcenter .feedbox .feedopt .myfeed.feedact{
+  color: #fff;
+  background: #FF8305;
+}
+.ibottombox{
+  width: 310px;
+  height: 50px;
+  margin: 30px auto 10px;
+  position: relative;
+}
+.ibottombox .thisprice{
+  font-size: 22px;
+  /* font-weight: 600; */
+  margin: 0 0 3px 0;
+}
+.ibottombox .thisprice span{
+  font-size: 12px;
+}
+
+.ibottombox .thisfts{
+  color: #6C6C6C;
+  font-size: 10px;
+}
+.ibottombox .pluscar{
+  width: 105px;
+  height: 40px;
+  border-radius: 20px;
+  background: #FF8305;
+  color: #fff;
+  font-size: 14px;
+  line-height: 40px;
+  text-align: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+}

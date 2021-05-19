@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>商品管理</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/resources/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="/resources/css/public.css" media="all" />
+
+</head>
+<body class="childrenBody">
+<!-- 查询条件开始 -->
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px;">
+	<legend>查询条件</legend>
+</fieldset>
+<blockquote class="layui-elem-quote">
+	<form action="" method="post" id="searchFrm" lay-filter="searchFrm" class="layui-form layui-form-pane">
+		<div class="layui-form-item">
+			<div class="layui-inline">
+				<label class="layui-form-label">类别</label>
+				<div class="layui-input-inline">
+					<select name="typeId" id="search_typeId">
+						<option value="0">请选择类别</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">商品名称</label>
+				<div class="layui-input-inline">
+					<input type="text" name="teaName"  autocomplete="off" class="layui-input">
+				</div>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-input-block" style="text-align: center;">
+				<button type="button" class="layui-btn" lay-submit="" lay-filter="doSearch"><span class="layui-icon layui-icon-search"></span>查询</button>
+				<button type="reset" class="layui-btn layui-btn-warm"><span class="layui-icon layui-icon-refresh-1"></span>重置</button>
+			</div>
+		</div>
+	</form>
+</blockquote>
+<!-- 查询条件结束-->
+
+
+<!-- 数据表格开始 -->
+<div>
+	<table class="layui-hide" id="goodsTable" lay-filter="goodsTable"></table>
+	<div id="goodsToolBar" style="display: none;">
+		<button type="button" lay-event="add" class="layui-btn layui-btn-sm"><span class="layui-icon layui-icon-add-1"></span>添加商品</button>
+	</div>
+
+	<div id="goodsRowBar" style="display: none;">
+		<button type="button" lay-event="update" class="layui-btn layui-btn-sm"><span class="layui-icon layui-icon-edit"></span>更新</button>
+		<button type="button" lay-event="delete" class="layui-btn layui-btn-sm layui-btn-danger"><span class="layui-icon layui-icon-delete"></span>删除</button>
+	</div>
+</div>
+
+<!-- 数据表格结束 -->
+
+<!-- 添加和修改的弹出层开始 -->
+<div style="display: none;padding: 5px" id="addOrUpdateDiv">
+	<form action="" method="post" class="layui-form layui-form-pane" id="dataFrm" lay-filter="dataFrm">
+		<div class="layui-col-md12 layui-col-xs12">
+			<div class="layui-row layui-col-space10">
+				<div class="layui-col-md9 layui-col-xs7">
+					<div class="layui-form-item magt3">
+						<label class="layui-form-label">类别</label>
+						<div class="layui-input-block">
+							<select name="typeId" id="typeId" lay-verify="required" >
+								<option value="">请选择类别</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">商品名称</label>
+						<div class="layui-input-block">
+							<input type="hidden" name="id">
+							<input type="text" class="layui-input" name="teaName" lay-verify="required" placeholder="请输入商品名称">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">商品描述</label>
+						<div class="layui-input-block">
+							<input type="text" class="layui-input" name="teaDescribe" placeholder="请输入商品描述">
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-md3 layui-col-xs5">
+					<div class="layui-upload-list thumbBox mag0 magt3">
+						<input type="hidden" name="teaImage" id="teaImage" value="">
+						<img class="layui-upload-img thumbImg" src="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">商品价格</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input" name="teaPrice" lay-verify="required" placeholder="请输入商品销售价格">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">冰度</label>
+					<div class="layui-input-block">
+						<input type="checkbox" name="temArr"   value="1" title="热"/>
+						<input type="checkbox" name="temArr"   value="2" title="温"/>
+						<input type="checkbox" name="temArr"   value="3" title="常规冰"/>
+						<input type="checkbox" name="temArr"   value="4" title="多冰"/>
+						<input type="checkbox" name="temArr"   value="5" title="少冰"/>
+						<input type="checkbox" name="temArr"   value="6" title="去冰"/>
+					</div>
+				</div>
+
+				<div class="layui-form-item">
+					<label class="layui-form-label">糖度</label>
+					<div class="layui-input-block">
+						<input type="checkbox" name="sweetArr"   value="1" title="常规糖"/>
+						<input type="checkbox" name="sweetArr"   value="2" title="半糖"/>
+						<input type="checkbox" name="sweetArr"   value="4" title="微糖"/>
+						<input type="checkbox" name="sweetArr"   value="5" title="不另外加糖"/>
+					</div>
+				</div>
+
+				<div class="layui-form-item">
+					<label class="layui-form-label">加料</label>
+					<div class="layui-input-block" id = "feedinfo1">
+
+					</div>
+				</div>
+
+				<div class="layui-inline">
+					<label class="layui-form-label">是否可用</label>
+					<div class="layui-input-inline">
+						<input type="radio" name="available" value="1" title="可用" checked="">
+						<input type="radio" name="available" value="0" title="不可用" >
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block" style="text-align: center; padding-top: 20px" >
+					<button type="button" class="layui-btn" lay-submit="" lay-filter="doSubmit" id="doSubmit" ><span class="layui-icon layui-icon-add-1"></span>提交</button>
+					<button type="reset" class="layui-btn layui-btn-warm"><span class="layui-icon layui-icon-refresh-1"></span>重置</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<!-- 添加和修改的弹出层结束 -->
+
+
+
+<script type="text/javascript" src="/resources/layui/layui.js"></script>
+<script type="text/javascript">
+	var tableIns;
+	layui.use(['jquery','form','table','layer','upload'],function(){
+		var $=layui.jquery;
+		var form=layui.form;
+		var table=layui.table;
+		var layer=layui.layer;
+		var upload=layui.upload;
+		//加载 数据
+		tableIns=table.render({
+			elem: '#goodsTable'
+			,url:'/goods/loadAllGoods'
+			,toolbar: '#goodsToolBar' //开启头部工具栏，并为其绑定左侧模板
+			,title: '商品数据表'
+			,height:'full-280'
+			,page: true
+			,cols: [ [
+				{field:'id', title:'ID',align:'center' ,width:'80'}
+				,{field:'teaName', title:'商品名称',align:'center',width:'150'}
+				,{field:'typeName', title:'类别名称',align:'center',width:'120'}
+				,{field:'teaDescribe', title:'商品描述',align:'center',width:'120'}
+				,{field:'teaPrice', title:'商品价格',align:'center',width:'100'}
+				,{field:'sweetArr', title:'糖度',align:'center',width:'200' ,templet:function(d){
+						var str =  d.sweetArr;
+						var arr = str.split(',');
+						var msg = "";
+						for (var i = 0; i < arr.length; i++) {
+							if(arr[i]==1){
+								msg += "常规糖"
+							}else if(arr[i]==2){
+								msg += "半糖"
+							}else if(arr[i]==3){
+								msg += "5分糖"
+							}else if(arr[i]==4){
+								msg += "微糖"
+							}else if(arr[i]==5){
+								msg += "不另外加糖"
+							}
+							if(!(i == arr.length - 1)){
+								msg += ","
+							}
+						}
+						return msg;
+					}}
+				,{field:'temArr', title:'冰度',align:'center',width:'200',templet:function(d){
+						var str =  d.temArr;
+						var arr = str.split(',');
+						var msg = "";
+						for (var i = 0; i < arr.length; i++) {
+							if(arr[i]==1){
+								msg += "热"
+							}else if(arr[i]==2){
+								msg += "温"
+							}else if(arr[i]==3){
+								msg += "常规冰"
+							}else if(arr[i]==4){
+								msg += "多冰"
+							}else if(arr[i]==5){
+								msg += "少冰"
+							}else if(arr[i]==6){
+								msg += "去冰"
+							}
+							if(!(i == arr.length - 1)){
+								msg += ","
+							}
+						}
+						return msg;
+					} }
+				,{field:'feedName', title:'加料',align:'center',width:'250'}
+				,{field:'feedArr', hide:true}
+				,{field:'teaImage', title:'商品图片',align:'center',width:'100', templet:function(d){
+						return '<img width=40 height=40 src="'+d.teaImage+ '" />';
+					}}
+				,{field:'available', title:'是否可用',align:'center',width:'100',templet:function(d){
+						return d.available==1?'<font color=blue>可用</font>':'<font color=red>不可用</font>';
+					}}
+				,{fixed: 'right', title:'操作', toolbar: '#goodsRowBar',align:'center',width:'200'}
+			] ]
+			,done: function(res, curr, count){ //处理删除某一页最后一条数据的BUG
+				if(res.data.length==0&&curr!=1){
+					tableIns.reload({
+						page:{
+							curr:(curr-1)
+						}
+					});
+				}
+			}
+		});
+
+		//加载查询条件类别的下拉列表
+		$.get("/teatype/loadAllTeatypeForSelect",function(res){
+			var data=res.data;
+			var dom=$("#search_typeId");
+			var html='<option value="">请选择类别</option>'
+			$.each(data,function(index,item){
+				html+='<option value="'+item.typeId+'">'+item.typeName+'</option>'
+			});
+			dom.html(html);
+			form.render("select");
+		})
+
+		//模糊查询
+		form.on("submit(doSearch)",function(data){
+			tableIns.reload({
+				where:data.field,
+				page:{
+					curr:1
+				}
+			});
+			return false;
+		});
+
+		//监听工具条的事件
+		table.on("toolbar(goodsTable)",function(obj){
+			switch(obj.event){
+				case 'add':
+					openAddLayer();
+					break;
+				case 'batchDelete':
+					batchDelete();
+					break;
+			};
+		});
+
+		//监听行工具条的事件
+		table.on("tool(goodsTable)",function(obj){
+			var data = obj.data; //获得当前行数据
+			switch(obj.event){
+				case 'update':
+					openUpdateGoodsLayer(data);
+					break;
+				case 'delete':
+					deleteGoods(data);
+					break;
+			};
+		});
+
+		var mainIndex;
+		var url;
+		//打开添加的弹出层
+		function openAddLayer(){
+			mainIndex=layer.open({
+				type:1,
+				content:$("#addOrUpdateDiv"),
+				area:['800px','600px'],
+				title:'添加商品',
+				success:function(){
+					$("#dataFrm")[0].reset();
+					url="/goods/addGoods";
+					$.get("/teatype/loadAllTeatypeForSelect",function(res){
+						var data=res.data;
+						var dom=$("#typeId");
+						var html='<option value="">请选择类别</option>'
+						$.each(data,function(index,item){
+							html+='<option value="'+item.typeId+'">'+item.typeName+'</option>'
+						});
+						dom.html(html);
+						form.render("select");
+					});
+					$.get("/feedinfo/getAllFeedinfo",function(res){
+						var data=res;
+						var dom=$("#feedinfo1");
+						var html1='';
+						$.each(data,function(index,item){
+							html1+='<input type="checkbox" name="feedArr"   value="' + item.feedId + '" title="' + item.feedName + '"/>'
+						});
+						dom.html(html1);
+						form.render("select");
+					});
+					//设置默认图片
+					$(".thumbImg").attr("src",'https://coco-1304972257.cos.ap-guangzhou.myqcloud.com/defaultCocoTea.png');
+					$("#teaImage").val('https://coco-1304972257.cos.ap-guangzhou.myqcloud.com/defaultCocoTea.png');
+				}
+			});
+		}
+
+		//打开修改的弹出层
+		function openUpdateGoodsLayer(data){
+			mainIndex=layer.open({
+				type:1,
+				content:$("#addOrUpdateDiv"),
+				area:['800px','600px'],
+				title:'修改商品',
+				success:function(){
+					$("#dataFrm")[0].reset();
+
+					//小料
+					$.get("/feedinfo/getAllFeedinfo",function(res){
+						var resdata=res;
+						var dom=$("#feedinfo1");
+						var html1='';
+
+						var feedArr=[];
+						feedArr=data.feedArr.split(",");
+						$.each(resdata,function(index,item){
+							var flag = false;
+							for(var j=0;j<feedArr.length;j++){
+								if(item.feedId == feedArr[j]){
+									flag = true;
+									break;
+								}
+							}
+							if(flag){
+								html1+='<input type="checkbox" name="feedArr"   value="' + item.feedId + '" title="' + item.feedName + '" checked />'
+							}else{
+								html1+='<input type="checkbox" name="feedArr"   value="' + item.feedId + '" title="' + item.feedName + '"  />'
+							}
+						});
+						dom.html(html1);
+						form.render();  //更新渲染
+					});
+					//给小料赋值并设置默认选中
+					var feedArr=[];
+					feedArr=data.feedArr.split(",");
+					for(var j=0;j<feedArr.length;j++){
+						var feedArrCheckbox=$("input[name='feedArr']");
+						for(var i=0;i<feedArrCheckbox.length;i++){
+							if(feedArrCheckbox[i].value==feedArr[j]){
+								feedArrCheckbox[i].value=feedArr[j];
+								feedArrCheckbox[i].checked=true;
+							}
+						}
+						form.render();  //更新渲染
+					}
+
+
+					url="/goods/updateGoods";
+					$.get("/teatype/loadAllTeatypeForSelect",function(res){
+						var redata=res.data;
+						var dom=$("#typeId");
+						var html='<option value="0">请选择类别</option>'
+						$.each(redata,function(index,item){
+							if(data.typeId===item.typeId){
+								html+='<option value="'+item.typeId+'" selected>'+item.typeName+'</option>'
+							}else{
+								html+='<option value="'+item.typeId+'">'+item.typeName+'</option>'
+							}
+						});
+						dom.html(html);
+
+						//给糖度赋值并设置默认选中
+						var sweetArr=[];
+						sweetArr=data.sweetArr.split(",");
+						for(var j=0;j<sweetArr.length;j++){
+							var sweetArrCheckbox=$("input[name='sweetArr']");
+							for(var i=0;i<sweetArrCheckbox.length;i++){
+								if(sweetArrCheckbox[i].value==sweetArr[j]){
+									sweetArrCheckbox[i].value=sweetArr[j];
+									sweetArrCheckbox[i].checked=true;
+								}
+							}
+							form.render();  //更新渲染
+						}
+
+						//给冰度赋值并设置默认选中
+						var temArr=[];
+						temArr=data.temArr.split(",");
+						for(var j=0;j<temArr.length;j++){
+							var temArrCheckbox=$("input[name='temArr']");
+							for(var i=0;i<temArrCheckbox.length;i++){
+								if(temArrCheckbox[i].value==temArr[j]){
+									temArrCheckbox[i].value=temArr[j];
+									temArrCheckbox[i].checked=true;
+								}
+							}
+							form.render();  //更新渲染
+					}
+				});
+
+					form.val("dataFrm",data);
+					$(".thumbImg").attr("src",data.teaImage);
+				}
+			});
+		}
+
+		form.on("submit(doSubmit)",function(data){
+			var price1 = data.field.teaPrice;
+			if(isNaN(price1)){
+				layer.msg("金额的输入有误！应当输入数字！");
+				return false;
+			}
+
+			// if ($("input:checkbox[name='sweetArr']:checked").length == 0) {
+			// 	return;
+			// }
+			//获取checkbox[name='level']的值，获取所有选中的复选框，并将其值放入数组中
+			var arr = new Array();
+			$("input:checkbox[name='sweetArr']:checked").each(function(i){
+				arr[i] = $(this).val();
+			});
+			//  替换 data.field.level的数据为拼接后的字符串
+			data.field.sweetArr = arr.join(",");//将数组合并成字符串
+
+		// 	if ($("input:checkbox[name='temArr']:checked").length == 0) {
+		// 	return;
+		// }
+		//获取checkbox[name='level']的值，获取所有选中的复选框，并将其值放入数组中
+		var arr = new Array();
+		$("input:checkbox[name='temArr']:checked").each(function(i){
+			arr[i] = $(this).val();
+		});
+		//  替换 data.field.level的数据为拼接后的字符串
+		data.field.temArr = arr.join(",");//将数组合并成字符串
+
+		// if ($("input:checkbox[name='feedArr']:checked").length == 0) {
+		// 	return;
+		// }
+		//获取checkbox[name='level']的值，获取所有选中的复选框，并将其值放入数组中
+		var feedarr = new Array();
+		$("input:checkbox[name='feedArr']:checked").each(function(i){
+			feedarr[i] = $(this).val();
+		});
+		console.log(feedarr);
+		if(feedarr.length > 6 ){
+			layer.msg("加料最多可以选择6样！");
+			return;
+		}
+
+		//  替换 data.field.level的数据为拼接后的字符串
+		data.field.feedArr = feedarr.join(",");//将数组合并成字符串
+
+			console.log(data.field);
+			$.post(url,data.field,function(res){
+				if(res.code==200){
+					tableIns.reload();
+				}
+
+				$("#teaImage").val("");
+				layer.msg(res.msg);
+				layer.close(mainIndex);
+			})
+			return false;
+		});
+
+		//文件上传
+		upload.render({
+			elem: '.thumbBox',
+			url: '/file/uploadFile',
+			acceptMime:'image/*',
+			accept: 'images'
+			,exts: 'jpg|png|jpeg|bmp'
+			,multiple: true,
+			method : "post",  //此处是为了演示之用，实际使用中请将此删除，默认用post方式提交
+			done: function(res, index, upload){
+				var path=res.path;
+				$('.thumbImg').attr('src', path);
+				$('.thumbBox').css("background","#fff");
+				$("#teaImage").val(path);//给隐藏域赋值
+			}
+		});
+
+		//删除
+		function deleteGoods(data){
+			layer.confirm('你确定要删除【'+data.teaName+'】这个商品吗?', {icon: 3, title:'提示'}, function(index){
+				$.post("/goods/deleteGoods",{id:data.id,goodsimg:data.goodsimg},function(res){
+					if(res.code==200){
+						tableIns.reload();
+					}
+					layer.msg(res.msg);
+				})
+				layer.close(index);
+			});
+		}
+	});
+</script>
+
+</body>
+</html>

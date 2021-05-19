@@ -1,0 +1,252 @@
+/* pages/checkout/checkout.wxss */
+page{
+  background: #F4F4F4;
+}
+div{
+  display: block;
+}
+.checkoutbox{
+    width: 340px;
+    position: relative;
+    margin: 18px auto;
+  }
+  .checkoutbox .orderbox{
+    padding: 20px 0;
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+  }
+  .checkoutbox .teainfobox{
+    margin-top: 15px;
+    padding: 20px 0 70px 0;
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+  }
+  .checkoutbox .teainfobox .nc{
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 25px;
+    /* flex-wrap: wrap; */
+    align-items: flex-end;
+  }
+  .checkoutbox .teainfobox .nc>div>b{
+      font-size: 16px;
+  }
+  .checkoutbox .teainfobox .nc span{
+      display: block;
+      margin: 5px 0 0 ;
+  }
+  .checkoutbox .ddh{
+    margin: 5px 25px;
+    font-weight: 600;
+    padding: 0 0 0 20px;
+  }
+  .checkoutbox span{
+      font-size: 12px;
+      color: #888;
+  }
+  .checkoutbox .teainfobox b{
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+  }
+  .checkoutbox .teainfobox b.money{
+      color: #41B883;
+  }
+  .posbox{
+    position: relative;
+  }
+  .qdbox{
+    position: relative;
+    margin-top: 10px;
+  }
+  .qdsj{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .bzimg{
+    width: 18px;
+    position: absolute;
+    top: 2px;
+    left: 15px;
+    display: inline-block;
+  }
+  .qdsjimg{
+    width: 20px;
+    position: absolute;
+    top: 0;
+    left: 15px;
+    display: inline-block;
+  }
+  .qdsj b{
+    font-weight: 400;
+    font-size: 14px;
+    color: #FF8305;
+  }
+  .gongji{
+    text-align: right;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .myremarks{
+    border: 1px solid #ddd;
+    font-size: 14px;
+    width: 310px;
+    height: 50px;
+    margin: 0 auto;
+    vertical-align: top;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  /* //购物车 */
+.carbox{
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  padding: 0 0px 10px 0px;
+  bottom: 0px;
+  z-index: 1777;
+}
+.carbox .horbar{
+  width: 355px;
+  height: 50px;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 25px;
+  box-shadow: 0px 5px 10px 2px #dadada;
+  z-index: 777;
+}
+.carbox .price{
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translate(0,-50%);
+  font-size: 22px;
+  font-weight: 600;
+}
+.carbox .price .yuan{
+  font-size: 12px;
+}
+
+.carbox .btn{
+  width: 90px;
+  height: 50px;
+  line-height: 50px;
+  position: absolute;
+  right: 0;
+  background: #a0a0a0;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  text-align: center;
+  color: #fff;
+  font-size:16px ;
+}
+.carbox .btn.btnact{
+  background: #FF8305;
+}
+
+/* //弹出微信支付 */
+.gotopaybox{
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1888;
+}
+.gotopaybox .container{
+  width: 320px;
+  height: 310px;
+  border-radius: 10px;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%,-50%);
+}
+.gotopaybox .container .close{
+  position: absolute;
+  top: 12px;
+  left: 20px;
+  font-size: 30px;
+  color: #3E3E3E;
+  font-weight: 200;
+}
+.gotopaybox .container .face{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #5B6A91;
+  font-weight: 600;
+  font-size: 18px;
+}
+.gotopaybox .container .who{
+  font-size: 22px;
+  font-weight: 500;
+  position: absolute;
+  top: 60px;
+}
+.gotopaybox .container .money{
+  font-size: 45px;
+  font-weight: 600;
+  /* font-family: "Bw Modelica Med Regular" */
+}
+.gotopaybox .container .money span{
+  font-size: 26px;
+  vertical-align: 12px;
+  font-weight: 600;
+}
+.gotopaybox .container .mode{
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  /* background: pink; */
+  position: absolute;
+  bottom: 90px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #FAFAFA;
+  /* border-bottom: 1px solid #FAFAFA; */
+}
+.gotopaybox .container .mode .zffs{
+  margin: 0 0 0 20px;
+  color: #818480;
+}
+.gotopaybox .container .mode .lqbox{
+  display: flex;
+  height: 40px;
+  width: 100px;
+}
+.gotopaybox .container .mode .lqbox .lqimg{
+  width: 20px;
+  margin: 10px;
+  display: inline;
+  vertical-align: middle;
+}
+.gotopaybox .container .paybtn{
+  width: 184px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 18px;
+  position: absolute;
+  bottom: 25px;
+  color: #fff;
+  background: #57BE6A;
+  font-weight: 600;
+}
+
+
+/* ///选择卡券 */
+.cardbox{
+  position: relative;
+  margin: 20px 0;
+}

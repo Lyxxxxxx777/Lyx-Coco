@@ -1,0 +1,22 @@
+/* pages/sealim/sealim.wxss */
+.title{
+    display: block;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 20px;
+}
+.text{
+    display: block;
+    margin: 20px 20px 50px;
+}
+.text span:nth-child(1){
+    margin-right: 50px;
+    color: #035793;
+}
+.text span:nth-child(2){
+    color: #888;
+}
+image{
+    width: 100%;
+    display: flex;
+}

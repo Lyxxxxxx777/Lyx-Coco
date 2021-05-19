@@ -1,0 +1,9 @@
+<!--pages/sealim/sealim.wxml-->
+<div class="title">冬天喝什么？康康Coco子的限定暖饮清单吧~</div>
+<div class="text"><span>Lyx&Coco</span><span>2020-11-25</span></div>
+<div class="imagebox">
+    <image mode="widthFix" src="https://s3.ax1x.com/2021/03/08/6lWGkT.png"></image>
+    <image mode="widthFix" src="https://s3.ax1x.com/2021/03/08/6lW37V.png"></image>
+    <image mode="widthFix" src="https://s3.ax1x.com/2021/03/08/6lW100.png"></image>
+    <image mode="widthFix" src="https://s3.ax1x.com/2021/03/08/6lWlmq.png"></image>
+</div>

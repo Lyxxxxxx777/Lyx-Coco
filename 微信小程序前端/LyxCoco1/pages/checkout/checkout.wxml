@@ -1,0 +1,75 @@
+<!--pages/checkout/checkout.wxml-->
+<!-- <text>pages/checkout/checkout.wxml</text> -->
+    <div class="checkoutbox">
+        <div class="orderbox">
+            <div class="posbox">
+                <image class="qdsjimg" mode="widthFix" src="/image/weizhi.png"></image>
+                <div class="ddh">{{orderInfo.storeName}}</div>
+            </div>
+            <div class="ddh"><span>{{orderInfo.storePosition}}</span></div>
+            <div class="qdbox">
+                <image class="qdsjimg" mode="widthFix" src="/image/time.png"></image>
+                <div class="ddh qdsj">取单时间
+                    <b wx:if="{{orderInfo.nolval=='now'}}">现在下单,稍后即取</b>
+                    <b wx:if="{{orderInfo.nolval!='now'}}">{{orderInfo.nolval}}</b>
+                </div>
+            </div>
+        </div>
+
+        <div class="teainfobox">
+            <div class="nc" wx:for="{{cartInfo}}" wx:for-item="item4" wx:key="index">
+                <div>
+                    <b>{{item4.teaName}}  ×{{item4.teaNumber}}</b>
+                    <span>{{item4.feedSelected}}/{{item4.temSelected}}/{{item4.sweetSelected}}</span>
+                </div>
+                <b class="money">￥{{(item4.teaPrice+item4.feedPrice)*item4.teaNumber}}.0</b>
+            </div>
+
+            <div class="ddh gongji">共计￥{{cartTotalPrice}}.0</div>
+
+            <picker bindchange="bindPickerChange" value="{{myCardIndex}}" range="{{myCardList}}">
+                <div class="cardbox">
+                    <image class="qdsjimg" mode="widthFix" src="/image/gift.png"></image>
+                    <div class="ddh qdsj">卡券
+                        <b wx:if="{{orderInfo.nolval=='now'}}">{{myCardList[myCardIndex]}}</b>
+                        <b wx:if="{{myCardListId[myCardIndex].cardName}}" class="money">-￥{{myCardListId[myCardIndex].cardPrice>cartTotalPrice?cartTotalPrice:myCardListId[myCardIndex].cardPrice}}.0</b>
+                    </div>
+                </div>
+            </picker>
+
+            <div class="posbox">
+                <image class="bzimg" mode="widthFix" src="/image/remarks.png"></image>
+                <div class="ddh">备注</div>
+            </div>
+
+            <textarea bindinput="xiebeizhu" class="myremarks" type="text" maxlength="20" placeholder="若有其他要求请备注说明"/>
+        </div>
+    </div>
+
+    <!-- 购物车bar -->
+<div class="carbox">
+    <div class="horbar">
+        <div class="price" wx:if="{{!myCardListId[myCardIndex].cardName}}"><span class="yuan">￥</span>{{cartTotalPrice}}.0</div>
+        <div class="price" wx:if="{{myCardListId[myCardIndex].cardName}}"><span class="yuan">￥</span>{{myCardListId[myCardIndex].cardPrice>cartTotalPrice?0:(cartTotalPrice-myCardListId[myCardIndex].cardPrice)}}.0</div>
+        <div bindtap="gotoPay" class="btn {{cartTotalPrice==0?'':'btnact'}}">去支付</div>
+    </div>
+</div>
+
+<!-- 去支付 -->
+<div class="gotopaybox" wx:if="{{isPayPadShow}}">
+<div class="container">
+    <div class="close" bindtap="closePay">×</div>
+    <div class="face">使用面容</div>
+    <div class="who">Lyx&Coco</div>
+    <div class="money" wx:if="{{!myCardListId[myCardIndex].cardName}}"><span>￥</span>{{cartTotalPrice}}.00</div>
+    <div class="money" wx:if="{{myCardListId[myCardIndex].cardName}}"><span>￥</span>{{myCardListId[myCardIndex].cardPrice>cartTotalPrice?0:(cartTotalPrice-myCardListId[myCardIndex].cardPrice)}}.00</div>
+    <div class="mode">
+        <div class="zffs">支付方式</div>
+        <div class="lqbox">
+            <image class="lqimg" mode="widthFix" src="/image/money.png"></image>
+            <div>零钱</div>
+        </div>
+    </div>
+    <div class="paybtn" bindtap="paySuccess">确认支付</div>
+</div>
+</div>

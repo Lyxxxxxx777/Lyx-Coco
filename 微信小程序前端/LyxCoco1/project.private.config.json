@@ -1,0 +1,72 @@
+{
+    "setting": {},
+    "condition": {
+        "plugin": {
+            "list": []
+        },
+        "game": {
+            "list": []
+        },
+        "gamePlugin": {
+            "list": []
+        },
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "pages/order/order",
+                    "pathName": "pages/order/order",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/address/address",
+                    "pathName": "pages/address/address",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/order/order",
+                    "pathName": "pages/order/order",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/bill/bill",
+                    "pathName": "pages/bill/bill",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/checkout/checkout",
+                    "pathName": "pages/checkout/checkout",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/mine/mine",
+                    "pathName": "pages/mine/mine",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/giftcard/giftcard",
+                    "pathName": "pages/giftcard/giftcard",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/mygiftcard/mygiftcard",
+                    "pathName": "pages/mygiftcard/mygiftcard",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/buygiftcard/buygiftcard",
+                    "pathName": "pages/buygiftcard/buygiftcard",
+                    "query": "whichCardIndex=0",
+                    "scene": null
+                }
+            ]
+        }
+    }
+}

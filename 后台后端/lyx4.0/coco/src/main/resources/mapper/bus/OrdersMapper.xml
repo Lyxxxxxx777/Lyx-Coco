@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxt.bus.mapper.OrdersMapper">
+    <!--获取订单号-->
+    <select  id="getOrdersId" resultType="String" parameterType="String">
+        select max(right(orderId, 4)) from orders where orderId like #{id}"%"
+    </select>
+
+    <select  id="getPickNum" resultType="String" parameterType="String">
+        select max(pickNum) from orders where orderId like #{datetime}"%"
+    </select>
+
+    <select  id="getOrdersByCustomerOpenId" resultType="com.sxt.bus.domain.Orders" parameterType="String">
+        select * from orders where customerOpenId = #{openId} order by id desc
+    </select>
+</mapper>
+
